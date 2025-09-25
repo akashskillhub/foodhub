@@ -343,7 +343,7 @@ function FoodWebsiteHome() {
         </div>
 
         {/* Custom CSS for continuous scrolling animation */}
-        <style jsx>{`
+        <style>{`
           @keyframes scroll-horizontal {
             0% {
               transform: translateX(0);

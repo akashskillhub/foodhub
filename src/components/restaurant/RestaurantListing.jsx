@@ -586,7 +586,7 @@ const RestaurantListing = () => {
       </Row>
 
       {/* Custom CSS */}
-      <style jsx>{`
+      <style>{`
         .restaurant-card:hover {
           transform: translateY(-5px);
           box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;

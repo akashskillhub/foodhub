@@ -1,293 +1,197 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Briefcase, Heart, Users, TrendingUp, MapPin, Clock } from 'lucide-react';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
-import SimpleFooter from '../components/ui/SimpleFooter';
+import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
+import { Briefcase, MapPin, Clock, DollarSign, Users, Target, Heart, TrendingUp } from 'lucide-react';
 
 const CareersPage = () => {
-  const benefits = [
-    { icon: <Heart size={32} color="#ff6b35" />, title: 'Health & Wellness', description: 'Comprehensive health insurance and wellness programs' },
-    { icon: <TrendingUp size={32} color="#ff6b35" />, title: 'Growth Opportunities', description: 'Clear career paths and professional development' },
-    { icon: <Users size={32} color="#ff6b35" />, title: 'Great Team', description: 'Work with passionate, talented individuals' },
-    { icon: <Clock size={32} color="#ff6b35" />, title: 'Work-Life Balance', description: 'Flexible hours and remote work options' }
+  const jobOpenings = [
+    {
+      title: "Frontend Developer",
+      department: "Engineering",
+      location: "Remote / San Francisco",
+      type: "Full-time",
+      salary: "$80k - $120k",
+      description: "Build beautiful user interfaces for our food delivery platform using React and modern web technologies.",
+      requirements: ["3+ years React experience", "TypeScript proficiency", "UI/UX design sense"]
+    },
+    {
+      title: "Delivery Operations Manager",
+      department: "Operations",
+      location: "New York",
+      type: "Full-time",
+      salary: "$70k - $100k",
+      description: "Optimize delivery routes and manage our fleet of delivery partners to ensure fast, reliable service.",
+      requirements: ["Operations management experience", "Data analysis skills", "Leadership experience"]
+    },
+    {
+      title: "Product Manager",
+      department: "Product",
+      location: "Remote / Los Angeles",
+      type: "Full-time",
+      salary: "$100k - $140k",
+      description: "Drive product strategy and roadmap for our mobile app and web platform features.",
+      requirements: ["5+ years product management", "Mobile app experience", "User research skills"]
+    },
+    {
+      title: "Customer Success Specialist",
+      department: "Customer Success",
+      location: "Chicago",
+      type: "Full-time",
+      salary: "$50k - $70k",
+      description: "Help customers resolve issues and ensure they have amazing experiences with our platform.",
+      requirements: ["Customer service experience", "Problem-solving skills", "Excellent communication"]
+    }
   ];
 
-  const openings = [
+  const benefits = [
     {
-      title: 'Senior Software Engineer',
-      department: 'Engineering',
-      location: 'San Francisco, CA',
-      type: 'Full-time',
-      description: 'Join our engineering team to build scalable food delivery solutions.',
-      requirements: ['5+ years React/Node.js experience', 'Experience with microservices', 'Strong problem-solving skills']
+      icon: <DollarSign size={32} />,
+      title: "Competitive Salary",
+      description: "Market-rate compensation with performance bonuses"
     },
     {
-      title: 'Product Manager',
-      department: 'Product',
-      location: 'Remote',
-      type: 'Full-time',
-      description: 'Lead product strategy and development for our mobile and web platforms.',
-      requirements: ['3+ years product management', 'Experience with consumer apps', 'Data-driven mindset']
+      icon: <Users size={32} />,
+      title: "Great Team",
+      description: "Work with passionate people who love food and technology"
     },
     {
-      title: 'Marketing Specialist',
-      department: 'Marketing',
-      location: 'New York, NY',
-      type: 'Full-time',
-      description: 'Drive user acquisition and engagement through creative marketing campaigns.',
-      requirements: ['Digital marketing experience', 'Social media expertise', 'Creative thinking']
+      icon: <Target size={32} />,
+      title: "Growth Opportunities",
+      description: "Clear career progression paths and skill development"
     },
     {
-      title: 'Delivery Operations Coordinator',
-      department: 'Operations',
-      location: 'Chicago, IL',
-      type: 'Full-time',
-      description: 'Optimize delivery routes and manage our delivery partner network.',
-      requirements: ['Operations experience', 'Logistics knowledge', 'Strong communication']
+      icon: <Clock size={32} />,
+      title: "Work-Life Balance",
+      description: "Flexible hours and remote work options"
     }
   ];
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      <SimpleNavbar />
-
-      <div style={{ paddingTop: '80px', paddingBottom: '50px' }}>
-        {/* Hero Section */}
-        <section style={{ background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)', color: 'white', padding: '80px 0' }}>
-          <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 20px' }}>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              style={{ textAlign: 'center' }}
-            >
-              <Briefcase size={80} style={{ marginBottom: '24px' }} />
-              <h1 style={{ fontSize: '3rem', marginBottom: '24px', fontWeight: 'bold' }}>Join Our Team</h1>
-              <p style={{ fontSize: '1.3rem', lineHeight: '1.6', maxWidth: '700px', margin: '0 auto' }}>
-                Help us revolutionize the food delivery industry. We're looking for passionate individuals
-                who want to make a difference in how people experience food.
-              </p>
-            </motion.div>
+    <Container className="py-5">
+      <Row>
+        <Col>
+          {/* Header */}
+          <div className="text-center mb-5">
+            <Briefcase size={64} style={{ color: '#fc8019', marginBottom: '24px' }} />
+            <h1 className="display-4 fw-bold mb-3">Join Our Team</h1>
+            <p className="lead text-secondary">
+              Help us revolutionize food delivery and create amazing experiences for millions of food lovers.
+            </p>
           </div>
-        </section>
 
-        <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 20px' }}>
-          {/* Why Work With Us */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '80px 0', textAlign: 'center' }}
-          >
-            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '50px' }}>Why Work With Us?</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  style={{
-                    background: 'white',
-                    padding: '40px',
-                    borderRadius: '16px',
-                    textAlign: 'center',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                    border: '1px solid #f0f0f0'
-                  }}
-                >
-                  <div style={{ marginBottom: '20px' }}>{benefit.icon}</div>
-                  <h3 style={{ fontSize: '1.5rem', color: '#333', marginBottom: '16px' }}>{benefit.title}</h3>
-                  <p style={{ color: '#666', lineHeight: '1.6' }}>{benefit.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Open Positions */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '50px', textAlign: 'center' }}>Open Positions</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              {openings.map((job, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  style={{
-                    background: 'white',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                    border: '1px solid #f0f0f0'
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '20px' }}>
-                    <div>
-                      <h3 style={{ fontSize: '1.5rem', color: '#333', marginBottom: '8px', fontWeight: 'bold' }}>
-                        {job.title}
-                      </h3>
-                      <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '12px' }}>
-                        <span style={{ color: '#ff6b35', fontWeight: 'bold' }}>{job.department}</span>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#666' }}>
-                          <MapPin size={16} />
-                          <span>{job.location}</span>
+          {/* Benefits Section */}
+          <Row className="mb-5">
+            <Col>
+              <h2 className="text-center mb-4">Why Work at FoodHub?</h2>
+              <Row className="g-4">
+                {benefits.map((benefit, index) => (
+                  <Col lg={3} md={6} key={index}>
+                    <Card className="h-100 border-0 shadow-sm text-center">
+                      <Card.Body className="p-4">
+                        <div style={{ color: '#fc8019', marginBottom: '16px' }}>
+                          {benefit.icon}
                         </div>
-                        <span style={{
-                          background: '#e8f5e8',
-                          color: '#28a745',
-                          padding: '4px 12px',
-                          borderRadius: '20px',
-                          fontSize: '0.9rem',
-                          fontWeight: 'bold'
-                        }}>
-                          {job.type}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p style={{ color: '#666', lineHeight: '1.6', marginBottom: '20px' }}>
-                    {job.description}
-                  </p>
-
-                  <div style={{ marginBottom: '24px' }}>
-                    <h4 style={{ color: '#333', fontSize: '1.1rem', marginBottom: '12px', fontWeight: 'bold' }}>
-                      Requirements:
-                    </h4>
-                    <ul style={{ color: '#666', lineHeight: '1.6', paddingLeft: '20px' }}>
-                      {job.requirements.map((req, idx) => (
-                        <li key={idx} style={{ marginBottom: '4px' }}>{req}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <button
-                    style={{
-                      background: '#ff6b35',
-                      color: 'white',
-                      border: 'none',
-                      padding: '12px 24px',
-                      borderRadius: '8px',
-                      fontSize: '1rem',
-                      fontWeight: 'bold',
-                      cursor: 'pointer',
-                      transition: 'background-color 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = '#e55a2b';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = '#ff6b35';
-                    }}
-                  >
-                    Apply Now
-                  </button>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Application Process */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{ background: '#f8f9fa', borderRadius: '20px', padding: '50px' }}>
-              <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '40px', textAlign: 'center' }}>
-                Application Process
-              </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px' }}>
-                {[
-                  { step: '1', title: 'Apply Online', description: 'Submit your application and resume' },
-                  { step: '2', title: 'Initial Review', description: 'We review your application within 5 days' },
-                  { step: '3', title: 'Phone Screen', description: 'Brief phone conversation with HR' },
-                  { step: '4', title: 'Final Interview', description: 'Meet the team and discuss the role' },
-                  { step: '5', title: 'Decision', description: 'We make our decision within 7 days' }
-                ].map((process, index) => (
-                  <div key={index} style={{ textAlign: 'center' }}>
-                    <div style={{
-                      width: '60px',
-                      height: '60px',
-                      background: '#ff6b35',
-                      color: 'white',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1.5rem',
-                      fontWeight: 'bold',
-                      margin: '0 auto 16px'
-                    }}>
-                      {process.step}
-                    </div>
-                    <h3 style={{ fontSize: '1.2rem', color: '#333', marginBottom: '8px' }}>
-                      {process.title}
-                    </h3>
-                    <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                      {process.description}
-                    </p>
-                  </div>
+                        <h5 className="fw-bold mb-2">{benefit.title}</h5>
+                        <p className="text-muted small mb-0">
+                          {benefit.description}
+                        </p>
+                      </Card.Body>
+                    </Card>
+                  </Col>
                 ))}
-              </div>
-            </div>
-          </motion.section>
+              </Row>
+            </Col>
+          </Row>
 
-          {/* Contact Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{
-              background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-              color: 'white',
-              borderRadius: '20px',
-              padding: '50px',
-              textAlign: 'center'
-            }}>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '24px' }}>Don't See a Perfect Fit?</h2>
-              <p style={{ fontSize: '1.2rem', marginBottom: '30px', opacity: 0.9 }}>
-                We're always looking for talented individuals to join our team.
-                Send us your resume and we'll keep you in mind for future opportunities.
+          {/* Job Openings */}
+          <Row className="mb-5">
+            <Col>
+              <h2 className="text-center mb-4">Open Positions</h2>
+              <Row className="g-4">
+                {jobOpenings.map((job, index) => (
+                  <Col lg={6} key={index}>
+                    <Card className="h-100 border-0 shadow-sm">
+                      <Card.Body className="p-4">
+                        <div className="d-flex justify-content-between align-items-start mb-3">
+                          <div>
+                            <h5 className="fw-bold mb-1">{job.title}</h5>
+                            <Badge bg="light" text="dark" className="mb-2">
+                              {job.department}
+                            </Badge>
+                          </div>
+                          <Badge bg="success">{job.type}</Badge>
+                        </div>
+
+                        <div className="d-flex flex-wrap gap-3 mb-3 small text-secondary">
+                          <div className="d-flex align-items-center">
+                            <MapPin size={14} className="me-1" />
+                            {job.location}
+                          </div>
+                          <div className="d-flex align-items-center">
+                            <DollarSign size={14} className="me-1" />
+                            {job.salary}
+                          </div>
+                        </div>
+
+                        <p className="text-secondary mb-3">
+                          {job.description}
+                        </p>
+
+                        <div className="mb-3">
+                          <h6 className="fw-bold mb-2">Requirements:</h6>
+                          <ul className="text-secondary small mb-0">
+                            {job.requirements.map((req, reqIndex) => (
+                              <li key={reqIndex}>{req}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <Button
+                          variant="outline-primary"
+                          style={{
+                            borderColor: '#fc8019',
+                            color: '#fc8019'
+                          }}
+                          className="w-100"
+                          onMouseOver={(e) => {
+                            e.target.style.backgroundColor = '#fc8019';
+                            e.target.style.color = 'white';
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.backgroundColor = 'transparent';
+                            e.target.style.color = '#fc8019';
+                          }}
+                        >
+                          Apply Now
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
+
+          {/* Application CTA */}
+          <Card className="text-center border-0" style={{ backgroundColor: '#fc8019' }}>
+            <Card.Body className="p-5 text-white">
+              <Briefcase size={48} className="mb-3" />
+              <h3 className="mb-3">Don't See Your Perfect Role?</h3>
+              <p className="mb-4 opacity-75">
+                We're always looking for talented people. Send us your resume and tell us how you'd like to contribute to FoodHub's mission.
               </p>
-              <div style={{ marginBottom: '30px' }}>
-                <p style={{ fontSize: '1.1rem', marginBottom: '8px' }}>
-                  <strong>Email:</strong> careers@foodiehub.com
-                </p>
-                <p style={{ fontSize: '1.1rem' }}>
-                  <strong>Subject:</strong> Future Opportunities - [Your Role/Department]
-                </p>
-              </div>
-              <button
-                style={{
-                  background: 'white',
-                  color: '#ff6b35',
-                  border: 'none',
-                  padding: '16px 32px',
-                  borderRadius: '8px',
-                  fontSize: '1.1rem',
-                  fontWeight: 'bold',
-                  cursor: 'pointer'
-                }}
+              <Button
+                variant="light"
+                size="lg"
+                className="px-4"
+                style={{ color: '#fc8019' }}
               >
-                Send Resume
-              </button>
-            </div>
-          </motion.section>
-        </div>
-      </div>
-
-      <SimpleFooter />
-    </div>
+                Send Your Resume
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

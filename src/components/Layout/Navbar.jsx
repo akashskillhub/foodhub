@@ -135,33 +135,8 @@ function NavigationBar() {
             {/* Right Side Navigation */}
             <Nav className="d-flex align-items-center gap-4">
 
-              {/* Home */}
-              <LinkContainer to="/">
-                <Nav.Link className="d-flex align-items-center text-dark px-0">
-                  <span className="fw-medium">Home</span>
-                </Nav.Link>
-              </LinkContainer>
 
-              {/* About */}
-              <LinkContainer to="/about">
-                <Nav.Link className="d-flex align-items-center text-dark px-0">
-                  <span className="fw-medium">About</span>
-                </Nav.Link>
-              </LinkContainer>
 
-              {/* Contact */}
-              <LinkContainer to="/contact">
-                <Nav.Link className="d-flex align-items-center text-dark px-0">
-                  <span className="fw-medium">Contact</span>
-                </Nav.Link>
-              </LinkContainer>
-
-              {/* Corporate */}
-              <LinkContainer to="/corporate">
-                <Nav.Link className="d-flex align-items-center text-dark px-0">
-                  <span className="fw-medium">Corporate</span>
-                </Nav.Link>
-              </LinkContainer>
 
               {/* Offers */}
               <Nav.Link className="d-flex align-items-center text-dark px-0">
@@ -245,7 +220,7 @@ function NavigationBar() {
 
 
       {/* Custom CSS for better styling */}
-      <style jsx>{`
+      <style>{`
         .user-dropdown .dropdown-toggle::after {
           display: none;
         }

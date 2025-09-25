@@ -18,6 +18,8 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import AdminPage from './pages/AdminPage';
+import CareersPage from './pages/CareersPage';
+import TeamPage from './pages/TeamPage';
 import './App.css';
 
 /**
@@ -50,11 +52,16 @@ function App() {
                   <Route path="/account" element={<OrderHistoryPage />} />
                   <Route path="/orders" element={<OrderHistoryPage />} />
                   <Route path="/admin" element={<AdminPage />} />
+                  <Route path="/careers" element={<CareersPage />} />
+                  <Route path="/team" element={<TeamPage />} />
                   <Route path="/blog" element={<div className="container py-5"><h1>Blog Coming Soon!</h1></div>} />
                   <Route path="/faq" element={<div className="container py-5"><h1>FAQ Coming Soon!</h1></div>} />
                   <Route path="/privacy" element={<div className="container py-5"><h1>Privacy Policy</h1></div>} />
                   <Route path="/terms" element={<div className="container py-5"><h1>Terms of Service</h1></div>} />
                   <Route path="/cookies" element={<div className="container py-5"><h1>Cookie Policy</h1></div>} />
+                  <Route path="/legal" element={<div className="container py-5"><h1>Legal Information</h1></div>} />
+                  <Route path="/support" element={<div className="container py-5"><h1>Customer Support</h1></div>} />
+                  <Route path="/partner" element={<div className="container py-5"><h1>Partner with Us</h1></div>} />
                 </Routes>
               </main>
               <Footer />
