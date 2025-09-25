@@ -103,24 +103,6 @@ const Footer = () => {
             </Nav>
           </Col>
 
-          {/* Legal */}
-          <Col lg={2} md={6} className="mb-4">
-            <h6 className="mb-3 fw-bold">Legal</h6>
-            <Nav className="flex-column">
-              <LinkContainer to="/terms">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Terms & Conditions</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/privacy">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Privacy Policy</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/cookies">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Cookie Policy</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/legal">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Legal</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Col>
 
           {/* Help & Support */}
           <Col lg={2} md={6} className="mb-4">

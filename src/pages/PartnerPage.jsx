@@ -1,333 +1,372 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Handshake, TrendingUp, Users, Truck, Utensils, Clock, DollarSign, CheckCircle } from 'lucide-react';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
-import SimpleFooter from '../components/ui/SimpleFooter';
+import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
+import { Handshake, TrendingUp, Users, DollarSign, Clock, CheckCircle } from 'lucide-react';
 
 const PartnerPage = () => {
-  const [partnerType, setPartnerType] = useState('restaurant');
+  const [formData, setFormData] = useState({
+    restaurantName: '',
+    ownerName: '',
+    email: '',
+    phone: '',
+    address: '',
+    cuisineType: '',
+    experience: '',
+    message: ''
+  });
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const partnerTypes = [
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate form submission
+    console.log('Partner form submitted:', formData);
+    setShowSuccess(true);
+    setFormData({
+      restaurantName: '',
+      ownerName: '',
+      email: '',
+      phone: '',
+      address: '',
+      cuisineType: '',
+      experience: '',
+      message: ''
+    });
+
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 5000);
+  };
+
+  const benefits = [
     {
-      id: 'restaurant',
-      title: 'Restaurant Partner',
-      icon: <Utensils size={48} color="#ff6b35" />,
-      description: 'Join our network of restaurant partners and reach more customers',
-      benefits: [
-        'Increase your customer base by 300%',
-        'Zero commission for the first month',
-        'Marketing support and promotions',
-        'Real-time analytics dashboard',
-        'Dedicated account manager'
-      ]
+      icon: <TrendingUp size={32} />,
+      title: "Increase Sales",
+      description: "Reach thousands of hungry customers and boost your revenue by up to 40%"
     },
     {
-      id: 'delivery',
-      title: 'Delivery Partner',
-      icon: <Truck size={48} color="#ff6b35" />,
-      description: 'Earn money delivering food with flexible schedules',
-      benefits: [
-        'Earn $15-25 per hour',
-        'Flexible working hours',
-        'Weekly payments',
-        'Fuel reimbursement available',
-        'Insurance coverage provided'
-      ]
+      icon: <Users size={32} />,
+      title: "Expand Customer Base",
+      description: "Connect with new customers who might never have discovered your restaurant"
+    },
+    {
+      icon: <Clock size={32} />,
+      title: "Easy Management",
+      description: "Simple dashboard to manage orders, menu, and track your earnings in real-time"
+    },
+    {
+      icon: <DollarSign size={32} />,
+      title: "Competitive Commission",
+      description: "Industry-leading commission rates and fast weekly payouts to your account"
     }
   ];
 
-  const stats = [
-    { icon: <Utensils size={32} />, number: '500+', label: 'Restaurant Partners' },
-    { icon: <Users size={32} />, number: '50K+', label: 'Happy Customers' },
-    { icon: <TrendingUp size={32} />, number: '300%', label: 'Average Revenue Increase' },
-    { icon: <Clock size={32} />, number: '30min', label: 'Average Delivery Time' }
+  const features = [
+    "Free listing and menu setup",
+    "Real-time order notifications",
+    "Customer feedback and ratings",
+    "Marketing and promotional support",
+    "Dedicated partner support team",
+    "Analytics and sales reports",
+    "Multiple payment options for customers",
+    "No setup fees or hidden charges"
   ];
 
-  const requirements = {
-    restaurant: [
-      'Valid business license and permits',
-      'Food safety certification',
-      'Minimum 4.0 rating on review platforms',
-      'Ability to fulfill orders within 20 minutes',
-      'Professional kitchen setup'
-    ],
-    delivery: [
-      'Valid driver\'s license',
-      'Own vehicle (car, bike, or scooter)',
-      'Smartphone with GPS capability',
-      'Background check clearance',
-      'Minimum age of 18 years'
-    ]
-  };
-
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      <SimpleNavbar />
-
-      <div style={{ paddingTop: '80px', paddingBottom: '50px' }}>
-        {/* Hero Section */}
-        <section style={{ background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)', color: 'white', padding: '80px 0' }}>
-          <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 20px' }}>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              style={{ textAlign: 'center' }}
+    <Container className="py-5">
+      <Row>
+        <Col>
+          {/* Header */}
+          <div className="text-center mb-5">
+            <div
+              style={{
+                width: '80px',
+                height: '80px',
+                backgroundColor: '#fc8019',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 16px'
+              }}
             >
-              <Handshake size={80} style={{ marginBottom: '24px' }} />
-              <h1 style={{ fontSize: '3rem', marginBottom: '24px', fontWeight: 'bold' }}>Partner with FoodieHub</h1>
-              <p style={{ fontSize: '1.3rem', lineHeight: '1.6', maxWidth: '700px', margin: '0 auto' }}>
-                Join thousands of restaurants and delivery partners who are growing their business with us.
-                Let's build the future of food delivery together.
-              </p>
-            </motion.div>
+              <Handshake size={40} style={{ color: 'white' }} />
+            </div>
+            <h1 className="display-4 fw-bold mb-3">Partner with FoodHub</h1>
+            <p className="lead text-secondary">
+              Join thousands of restaurants already growing their business with us
+            </p>
           </div>
-        </section>
 
-        <div className="container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-          {/* Partner Types */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '80px 0 60px' }}
-          >
-            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '50px', textAlign: 'center' }}>
-              Choose Your Partnership
-            </h2>
+          {/* Benefits */}
+          <Row className="mb-5">
+            <Col>
+              <h2 className="text-center mb-4">Why Partner with Us?</h2>
+              <Row className="g-4">
+                {benefits.map((benefit, index) => (
+                  <Col lg={3} md={6} key={index}>
+                    <Card className="h-100 border-0 shadow-sm text-center">
+                      <Card.Body className="p-4">
+                        <div style={{ color: '#fc8019', marginBottom: '16px' }}>
+                          {benefit.icon}
+                        </div>
+                        <h5 className="fw-bold mb-2">{benefit.title}</h5>
+                        <p className="text-muted small mb-0">
+                          {benefit.description}
+                        </p>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '40px' }}>
-              {partnerTypes.map((type, index) => (
-                <motion.div
-                  key={type.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  style={{
-                    background: 'white',
-                    borderRadius: '20px',
-                    padding: '40px',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-                    border: partnerType === type.id ? '3px solid #ff6b35' : '1px solid #f0f0f0',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onClick={() => setPartnerType(type.id)}
-                  onMouseEnter={(e) => {
-                    if (partnerType !== type.id) {
-                      e.currentTarget.style.transform = 'translateY(-5px)';
-                      e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.15)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (partnerType !== type.id) {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
-                    }
-                  }}
-                >
-                  <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-                    {type.icon}
-                    <h3 style={{ fontSize: '1.8rem', color: '#333', margin: '20px 0 16px', fontWeight: 'bold' }}>
-                      {type.title}
-                    </h3>
-                    <p style={{ color: '#666', lineHeight: '1.6' }}>{type.description}</p>
+          <Row>
+            {/* Partnership Form */}
+            <Col lg={8}>
+              <Card className="border-0 shadow-sm">
+                <Card.Body className="p-4">
+                  <h3 className="mb-4">Apply to Become a Partner</h3>
+
+                  {showSuccess && (
+                    <Alert variant="success" className="d-flex align-items-center">
+                      <CheckCircle size={20} className="me-2" />
+                      <div>
+                        <strong>Application submitted successfully!</strong><br />
+                        We'll review your application and get back to you within 2-3 business days.
+                      </div>
+                    </Alert>
+                  )}
+
+                  <Form onSubmit={handleSubmit}>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="fw-bold">Restaurant Name *</Form.Label>
+                          <Form.Control
+                            type="text"
+                            required
+                            value={formData.restaurantName}
+                            onChange={(e) => setFormData({ ...formData, restaurantName: e.target.value })}
+                            placeholder="Your restaurant name"
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="fw-bold">Owner/Manager Name *</Form.Label>
+                          <Form.Control
+                            type="text"
+                            required
+                            value={formData.ownerName}
+                            onChange={(e) => setFormData({ ...formData, ownerName: e.target.value })}
+                            placeholder="Your full name"
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="fw-bold">Email Address *</Form.Label>
+                          <Form.Control
+                            type="email"
+                            required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            placeholder="your@email.com"
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="fw-bold">Phone Number *</Form.Label>
+                          <Form.Control
+                            type="tel"
+                            required
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            placeholder="+1 (555) 123-4567"
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Form.Group className="mb-3">
+                      <Form.Label className="fw-bold">Restaurant Address *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        required
+                        value={formData.address}
+                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                        placeholder="Full restaurant address"
+                      />
+                    </Form.Group>
+
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="fw-bold">Cuisine Type *</Form.Label>
+                          <Form.Select
+                            required
+                            value={formData.cuisineType}
+                            onChange={(e) => setFormData({ ...formData, cuisineType: e.target.value })}
+                          >
+                            <option value="">Select cuisine type</option>
+                            <option value="american">American</option>
+                            <option value="asian">Asian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="indian">Indian</option>
+                            <option value="italian">Italian</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="mediterranean">Mediterranean</option>
+                            <option value="thai">Thai</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="fast-food">Fast Food</option>
+                            <option value="other">Other</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label className="fw-bold">Years in Business</Form.Label>
+                          <Form.Select
+                            value={formData.experience}
+                            onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                          >
+                            <option value="">Select experience</option>
+                            <option value="new">Just starting</option>
+                            <option value="1-2">1-2 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="5-10">5-10 years</option>
+                            <option value="10+">10+ years</option>
+                          </Form.Select>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+
+                    <Form.Group className="mb-4">
+                      <Form.Label className="fw-bold">Additional Information</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Tell us about your restaurant, special dishes, current delivery setup, etc."
+                      />
+                    </Form.Group>
+
+                    <Button
+                      type="submit"
+                      style={{ backgroundColor: '#fc8019', borderColor: '#fc8019' }}
+                      size="lg"
+                      className="px-4"
+                    >
+                      Submit Application
+                    </Button>
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            {/* Features & Info */}
+            <Col lg={4}>
+              <Card className="border-0 shadow-sm mb-4">
+                <Card.Body className="p-4">
+                  <h5 className="mb-3">What You Get</h5>
+                  <ul className="list-unstyled">
+                    {features.map((feature, index) => (
+                      <li key={index} className="mb-2 d-flex align-items-start">
+                        <CheckCircle size={16} style={{ color: '#fc8019', marginTop: '2px' }} className="me-2 flex-shrink-0" />
+                        <span className="small">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Card.Body>
+              </Card>
+
+              <Card className="border-0 shadow-sm">
+                <Card.Body className="p-4">
+                  <h5 className="mb-3">Get Started in 3 Steps</h5>
+                  <div className="mb-3">
+                    <div className="d-flex align-items-center mb-2">
+                      <div
+                        style={{
+                          width: '24px',
+                          height: '24px',
+                          backgroundColor: '#fc8019',
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          fontSize: '12px',
+                          fontWeight: 'bold'
+                        }}
+                        className="me-3"
+                      >
+                        1
+                      </div>
+                      <span className="fw-bold">Apply Online</span>
+                    </div>
+                    <p className="small text-muted ms-5">Submit your restaurant details through our simple form</p>
+                  </div>
+
+                  <div className="mb-3">
+                    <div className="d-flex align-items-center mb-2">
+                      <div
+                        style={{
+                          width: '24px',
+                          height: '24px',
+                          backgroundColor: '#fc8019',
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          fontSize: '12px',
+                          fontWeight: 'bold'
+                        }}
+                        className="me-3"
+                      >
+                        2
+                      </div>
+                      <span className="fw-bold">Get Approved</span>
+                    </div>
+                    <p className="small text-muted ms-5">We'll review your application and contact you within 2-3 days</p>
                   </div>
 
                   <div>
-                    <h4 style={{ fontSize: '1.3rem', color: '#333', marginBottom: '16px', fontWeight: 'bold' }}>
-                      Benefits:
-                    </h4>
-                    <ul style={{ listStyle: 'none', padding: 0 }}>
-                      {type.benefits.map((benefit, idx) => (
-                        <li key={idx} style={{
+                    <div className="d-flex align-items-center mb-2">
+                      <div
+                        style={{
+                          width: '24px',
+                          height: '24px',
+                          backgroundColor: '#fc8019',
+                          borderRadius: '50%',
                           display: 'flex',
                           alignItems: 'center',
-                          marginBottom: '12px',
-                          color: '#666'
-                        }}>
-                          <CheckCircle size={16} color="#28a745" style={{ marginRight: '12px', flexShrink: 0 }} />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
+                          justifyContent: 'center',
+                          color: 'white',
+                          fontSize: '12px',
+                          fontWeight: 'bold'
+                        }}
+                        className="me-3"
+                      >
+                        3
+                      </div>
+                      <span className="fw-bold">Start Earning</span>
+                    </div>
+                    <p className="small text-muted ms-5">Set up your menu and start receiving orders immediately</p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Stats */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{ background: '#f8f9fa', borderRadius: '20px', padding: '60px' }}>
-              <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '50px', textAlign: 'center' }}>
-                Why Choose FoodieHub?
-              </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px' }}>
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    style={{ textAlign: 'center' }}
-                  >
-                    <div style={{ color: '#ff6b35', marginBottom: '16px' }}>{stat.icon}</div>
-                    <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#ff6b35', marginBottom: '8px' }}>
-                      {stat.number}
-                    </div>
-                    <div style={{ color: '#666', fontSize: '1.1rem' }}>{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Requirements */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}>
-              <div style={{
-                background: 'white',
-                borderRadius: '20px',
-                padding: '40px',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ fontSize: '2rem', color: '#333', marginBottom: '30px' }}>
-                  Requirements for {partnerTypes.find(t => t.id === partnerType)?.title}
-                </h3>
-                <ul style={{ listStyle: 'none', padding: 0 }}>
-                  {requirements[partnerType].map((req, idx) => (
-                    <li key={idx} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '16px',
-                      color: '#666',
-                      fontSize: '1.1rem'
-                    }}>
-                      <CheckCircle size={20} color="#28a745" style={{ marginRight: '16px', flexShrink: 0 }} />
-                      {req}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div style={{
-                background: 'white',
-                borderRadius: '20px',
-                padding: '40px',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
-              }}>
-                <h3 style={{ fontSize: '2rem', color: '#333', marginBottom: '30px' }}>How It Works</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  {[
-                    { step: 1, title: 'Apply Online', desc: 'Fill out our partnership application form' },
-                    { step: 2, title: 'Review Process', desc: 'We review your application within 48 hours' },
-                    { step: 3, title: 'Onboarding', desc: 'Complete setup and training with our team' },
-                    { step: 4, title: 'Go Live', desc: 'Start receiving orders and earning money' }
-                  ].map((process, index) => (
-                    <div key={index} style={{ display: 'flex', alignItems: 'start', gap: '16px' }}>
-                      <div style={{
-                        width: '40px',
-                        height: '40px',
-                        background: '#ff6b35',
-                        color: 'white',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '1.2rem',
-                        fontWeight: 'bold',
-                        flexShrink: 0
-                      }}>
-                        {process.step}
-                      </div>
-                      <div>
-                        <h4 style={{ color: '#333', marginBottom: '4px', fontSize: '1.2rem' }}>
-                          {process.title}
-                        </h4>
-                        <p style={{ color: '#666', lineHeight: '1.5' }}>{process.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Application Form */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{
-              background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-              color: 'white',
-              borderRadius: '20px',
-              padding: '60px',
-              textAlign: 'center'
-            }}>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '24px' }}>Ready to Get Started?</h2>
-              <p style={{ fontSize: '1.2rem', marginBottom: '40px', opacity: 0.9, maxWidth: '600px', margin: '0 auto 40px' }}>
-                Join our growing network of partners and start increasing your revenue today.
-                The application process is quick and easy.
-              </p>
-
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap', marginBottom: '40px' }}>
-                <div style={{ textAlign: 'center' }}>
-                  <DollarSign size={32} style={{ marginBottom: '16px' }} />
-                  <h4 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>No Setup Fees</h4>
-                  <p style={{ opacity: 0.9 }}>Get started at no cost</p>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                  <Clock size={32} style={{ marginBottom: '16px' }} />
-                  <h4 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>Quick Approval</h4>
-                  <p style={{ opacity: 0.9 }}>48-hour review process</p>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                  <Users size={32} style={{ marginBottom: '16px' }} />
-                  <h4 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>Dedicated Support</h4>
-                  <p style={{ opacity: 0.9 }}>Personal account manager</p>
-                </div>
-              </div>
-
-              <button
-                style={{
-                  background: 'white',
-                  color: '#ff6b35',
-                  border: 'none',
-                  padding: '18px 36px',
-                  borderRadius: '12px',
-                  fontSize: '1.2rem',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
-                }}
-              >
-                Apply Now as {partnerTypes.find(t => t.id === partnerType)?.title}
-              </button>
-
-              <p style={{ marginTop: '24px', fontSize: '0.95rem', opacity: 0.8 }}>
-                Questions? Contact our partnership team at <strong>partners@foodiehub.com</strong>
-              </p>
-            </div>
-          </motion.section>
-        </div>
-      </div>
-
-      <SimpleFooter />
-    </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
