@@ -1,13 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, FileText, Calendar, DollarSign, Users, BarChart3 } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
-import SimpleFooter from '../components/ui/SimpleFooter';
+import { TrendingUp, FileText, Calendar, DollarSign, Users, BarChart3, Download, ExternalLink, PieChart } from 'lucide-react';
 
 const InvestorRelationsPage = () => {
-  const { theme } = useTheme();
-
   const financialHighlights = [
     {
       title: 'Revenue Growth',
@@ -31,393 +26,545 @@ const InvestorRelationsPage = () => {
       color: '#17a2b8'
     },
     {
-      title: 'Market Cap',
-      value: '$1.2B',
-      description: 'Current valuation',
+      title: 'Gross Revenue',
+      value: '₹850M',
+      description: 'Annual run rate',
       icon: DollarSign,
-      color: '#6f42c1'
+      color: '#ffc107'
     }
   ];
 
   const reports = [
     {
-      title: 'Q3 2024 Earnings Report',
-      date: 'November 15, 2024',
-      type: 'Quarterly Report',
-      fileSize: '2.3 MB'
+      title: 'Annual Report 2024',
+      description: 'Comprehensive overview of our business performance and strategic initiatives',
+      date: 'March 2024',
+      type: 'PDF',
+      size: '2.4 MB'
     },
     {
-      title: 'Annual Report 2023',
-      date: 'March 31, 2024',
-      type: 'Annual Report',
-      fileSize: '5.7 MB'
+      title: 'Q3 2024 Earnings',
+      description: 'Third quarter financial results and business metrics',
+      date: 'October 2024',
+      type: 'PDF',
+      size: '1.8 MB'
     },
     {
-      title: 'Q2 2024 Financial Results',
-      date: 'August 20, 2024',
-      type: 'Quarterly Report',
-      fileSize: '1.8 MB'
+      title: 'Sustainability Report',
+      description: 'Our environmental and social impact initiatives and progress',
+      date: 'June 2024',
+      type: 'PDF',
+      size: '3.1 MB'
     },
     {
-      title: 'ESG Report 2024',
-      date: 'June 10, 2024',
-      type: 'Sustainability Report',
-      fileSize: '3.2 MB'
+      title: 'Investor Presentation',
+      description: 'Latest investor deck with market opportunity and growth strategy',
+      date: 'November 2024',
+      type: 'PDF',
+      size: '5.2 MB'
     }
   ];
 
   const upcomingEvents = [
     {
       title: 'Q4 2024 Earnings Call',
-      date: 'February 28, 2025',
-      time: '4:00 PM EST',
-      type: 'Earnings Call'
+      date: 'February 15, 2025',
+      time: '10:00 AM IST',
+      description: 'Live discussion of quarterly results with management'
     },
     {
-      title: 'Investor Day 2025',
-      date: 'March 15, 2025',
-      time: '9:00 AM EST',
-      type: 'Investor Event'
+      title: 'Annual Investor Day',
+      date: 'March 20, 2025',
+      time: '2:00 PM IST',
+      description: 'Deep dive into strategy, market opportunities, and long-term vision'
     },
     {
-      title: 'Annual Shareholder Meeting',
-      date: 'May 20, 2025',
-      time: '10:00 AM EST',
-      type: 'AGM'
+      title: 'Technology Innovation Showcase',
+      date: 'April 10, 2025',
+      time: '11:00 AM IST',
+      description: 'Demonstration of latest technology initiatives and AI capabilities'
     }
   ];
 
+  const keyMetrics = [
+    { label: 'Market Cap', value: '₹12.5B', change: '+23%' },
+    { label: 'Revenue (TTM)', value: '₹2.1B', change: '+45%' },
+    { label: 'Gross Margin', value: '68%', change: '+2.3%' },
+    { label: 'Customer Lifetime Value', value: '₹2,400', change: '+15%' },
+    { label: 'Monthly Active Users', value: '5.2M', change: '+38%' },
+    { label: 'Average Order Value', value: '₹420', change: '+12%' }
+  ];
+
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', background: theme.colors.background, minHeight: '100vh' }}>
-      <SimpleNavbar />
+    <div style={{ minHeight: '100vh', background: '#f8f9fc', paddingTop: '100px' }}>
+      <div style={{ paddingTop: '20px', paddingBottom: '60px' }}>
 
-      <div style={{ paddingTop: '80px', paddingBottom: '50px' }}>
-        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{
+            textAlign: 'center',
+            marginBottom: '60px',
+            background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+            color: 'white',
+            padding: '80px 20px',
+            borderRadius: '0 0 20px 20px'
+          }}
+        >
+          <TrendingUp size={64} style={{ marginBottom: '24px' }} />
+          <h1 style={{
+            fontSize: '48px',
+            fontWeight: 'bold',
+            marginBottom: '16px'
+          }}>
+            Investor Relations
+          </h1>
+          <p style={{
+            fontSize: '20px',
+            opacity: 0.9,
+            maxWidth: '600px',
+            margin: '0 auto'
+          }}>
+            Building sustainable growth and delivering value to our shareholders
+          </p>
+        </motion.div>
 
-          {/* Hero Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0', textAlign: 'center' }}
-          >
-            <h1 style={{
-              fontSize: '3.5rem',
-              fontWeight: 'bold',
-              color: theme.colors.text,
-              marginBottom: '20px',
-              background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>
-              Investor Relations
-            </h1>
-            <p style={{
-              fontSize: '1.3rem',
-              color: theme.colors.textSecondary,
-              maxWidth: '800px',
-              margin: '0 auto',
-              lineHeight: '1.6'
-            }}>
-              Building the future of food delivery with transparent communication and strong financial performance
-            </p>
-          </motion.section>
+        {/* Financial Highlights */}
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto 80px',
+            padding: '0 20px'
+          }}
+        >
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: '36px',
+            fontWeight: 'bold',
+            marginBottom: '50px',
+            color: '#333'
+          }}>
+            Financial Highlights
+          </h2>
 
-          {/* Financial Highlights */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <h2 style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: theme.colors.text,
-              marginBottom: '50px',
-              textAlign: 'center'
-            }}>
-              Financial Highlights
-            </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '30px'
+          }}>
+            {financialHighlights.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                whileHover={{ scale: 1.03, y: -5 }}
+                style={{
+                  background: 'white',
+                  padding: '40px 30px',
+                  borderRadius: '20px',
+                  textAlign: 'center',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                  border: '1px solid #e0e0e0'
+                }}
+              >
+                <div style={{
+                  background: item.color,
+                  color: 'white',
+                  borderRadius: '50%',
+                  width: '70px',
+                  height: '70px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 20px'
+                }}>
+                  <item.icon size={28} />
+                </div>
+                <h3 style={{
+                  fontSize: '32px',
+                  fontWeight: 'bold',
+                  color: item.color,
+                  marginBottom: '8px'
+                }}>
+                  {item.value}
+                </h3>
+                <h4 style={{
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  color: '#333',
+                  marginBottom: '8px'
+                }}>
+                  {item.title}
+                </h4>
+                <p style={{
+                  color: '#666',
+                  margin: 0,
+                  fontSize: '14px'
+                }}>
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
+        {/* Key Metrics */}
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto 80px',
+            padding: '0 20px'
+          }}
+        >
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: '36px',
+            fontWeight: 'bold',
+            marginBottom: '50px',
+            color: '#333'
+          }}>
+            Key Performance Metrics
+          </h2>
+
+          <div style={{
+            background: 'white',
+            borderRadius: '20px',
+            padding: '40px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+            border: '1px solid #e0e0e0'
+          }}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '30px',
-              marginBottom: '60px'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '30px'
             }}>
-              {financialHighlights.map((item, index) => (
+              {keyMetrics.map((metric, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  style={{
-                    background: theme.colors.surface,
-                    padding: '40px 30px',
-                    borderRadius: '20px',
-                    textAlign: 'center',
-                    boxShadow: theme.shadows.medium,
-                    border: `1px solid ${theme.colors.border}`,
-                    transition: 'transform 0.3s ease'
-                  }}
-                  whileHover={{ scale: 1.05 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  style={{ textAlign: 'center' }}
                 >
                   <div style={{
-                    width: '80px',
-                    height: '80px',
-                    background: `${item.color}15`,
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 20px',
-                    border: `3px solid ${item.color}`
-                  }}>
-                    <item.icon size={32} color={item.color} />
-                  </div>
-                  <h3 style={{
-                    fontSize: '2.2rem',
+                    fontSize: '24px',
                     fontWeight: 'bold',
-                    color: item.color,
+                    color: '#333',
+                    marginBottom: '5px'
+                  }}>
+                    {metric.value}
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    color: '#666',
                     marginBottom: '8px'
                   }}>
-                    {item.value}
-                  </h3>
-                  <p style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    color: theme.colors.text,
-                    marginBottom: '8px'
+                    {metric.label}
+                  </div>
+                  <div style={{
+                    fontSize: '12px',
+                    color: metric.change.startsWith('+') ? '#28a745' : '#dc3545',
+                    fontWeight: 'bold',
+                    background: metric.change.startsWith('+') ? '#e8f5e8' : '#fdeaea',
+                    padding: '4px 8px',
+                    borderRadius: '12px',
+                    display: 'inline-block'
                   }}>
-                    {item.title}
-                  </p>
-                  <p style={{ color: theme.colors.textSecondary }}>{item.description}</p>
+                    {metric.change}
+                  </div>
                 </motion.div>
               ))}
             </div>
-          </motion.section>
+          </div>
+        </motion.section>
 
-          {/* Reports & Documents */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <h2 style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: theme.colors.text,
-              marginBottom: '40px',
-              textAlign: 'center'
-            }}>
-              Financial Reports & Documents
-            </h2>
+        {/* Financial Reports */}
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto 80px',
+            padding: '0 20px'
+          }}
+        >
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: '36px',
+            fontWeight: 'bold',
+            marginBottom: '50px',
+            color: '#333'
+          }}>
+            Financial Reports & Documents
+          </h2>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '20px'
-            }}>
-              {reports.map((report, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  style={{
-                    background: theme.colors.surface,
-                    padding: '30px',
-                    borderRadius: '16px',
-                    boxShadow: theme.shadows.small,
-                    border: `1px solid ${theme.colors.border}`,
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '25px'
+          }}>
+            {reports.map((report, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                whileHover={{ scale: 1.02, y: -3 }}
+                style={{
+                  background: 'white',
+                  padding: '30px',
+                  borderRadius: '15px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                  border: '1px solid #e0e0e0'
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginBottom: '15px'
+                }}>
+                  <FileText size={24} style={{ color: '#ff6b35' }} />
+                  <div style={{
+                    background: '#f8f9fa',
+                    padding: '4px 8px',
+                    borderRadius: '12px',
+                    fontSize: '12px',
+                    color: '#666'
+                  }}>
+                    {report.type} • {report.size}
+                  </div>
+                </div>
+                <h3 style={{
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  marginBottom: '8px',
+                  color: '#333'
+                }}>
+                  {report.title}
+                </h3>
+                <p style={{
+                  color: '#666',
+                  fontSize: '14px',
+                  lineHeight: '1.5',
+                  marginBottom: '15px'
+                }}>
+                  {report.description}
+                </p>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}>
+                  <span style={{
+                    color: '#999',
+                    fontSize: '13px'
+                  }}>
+                    {report.date}
+                  </span>
+                  <button style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    background: '#ff6b35',
+                    color: 'white',
+                    border: 'none',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    fontSize: '13px',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
                   }}
-                  whileHover={{ scale: 1.02, boxShadow: theme.shadows.medium }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
-                    <div style={{
-                      width: '50px',
-                      height: '50px',
-                      background: `${theme.colors.primary}15`,
-                      borderRadius: '12px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <FileText size={24} color={theme.colors.primary} />
-                    </div>
-                    <div>
-                      <h3 style={{
-                        fontSize: '1.2rem',
-                        fontWeight: '600',
-                        color: theme.colors.text,
-                        marginBottom: '4px'
-                      }}>
-                        {report.title}
-                      </h3>
-                      <p style={{ color: theme.colors.textSecondary, fontSize: '0.9rem' }}>
-                        {report.type} • {report.fileSize}
-                      </p>
-                    </div>
-                  </div>
-                  <p style={{
-                    color: theme.colors.textSecondary,
-                    marginBottom: '15px',
-                    fontSize: '0.95rem'
-                  }}>
-                    Published: {report.date}
-                  </p>
-                  <button style={{
-                    background: theme.colors.primary,
-                    color: 'white',
-                    border: 'none',
-                    padding: '10px 20px',
-                    borderRadius: '8px',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    width: '100%',
-                    fontSize: '0.95rem'
-                  }}>
-                    Download PDF
+                  onMouseOver={(e) => e.target.style.background = '#e55a2b'}
+                  onMouseOut={(e) => e.target.style.background = '#ff6b35'}
+                  >
+                    <Download size={14} />
+                    Download
                   </button>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
-          {/* Upcoming Events */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
+        {/* Upcoming Events */}
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 20px'
+          }}
+        >
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: '36px',
+            fontWeight: 'bold',
+            marginBottom: '50px',
+            color: '#333'
+          }}>
+            Upcoming Events
+          </h2>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '25px',
+            marginBottom: '60px'
+          }}>
+            {upcomingEvents.map((event, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+                style={{
+                  background: 'white',
+                  padding: '30px',
+                  borderRadius: '15px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                  border: '1px solid #e0e0e0',
+                  borderLeft: '4px solid #ff6b35'
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginBottom: '15px'
+                }}>
+                  <Calendar size={20} style={{ color: '#ff6b35', marginRight: '8px' }} />
+                  <span style={{
+                    background: '#fff3e0',
+                    color: '#ff6b35',
+                    padding: '4px 8px',
+                    borderRadius: '12px',
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                  }}>
+                    {event.date}
+                  </span>
+                </div>
+                <h3 style={{
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  marginBottom: '8px',
+                  color: '#333'
+                }}>
+                  {event.title}
+                </h3>
+                <p style={{
+                  color: '#666',
+                  fontSize: '14px',
+                  lineHeight: '1.5',
+                  marginBottom: '12px'
+                }}>
+                  {event.description}
+                </p>
+                <div style={{
+                  color: '#ff6b35',
+                  fontSize: '13px',
+                  fontWeight: 'bold'
+                }}>
+                  {event.time}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Contact IR */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          style={{
+            textAlign: 'center',
+            padding: '0 20px'
+          }}
+        >
+          <div style={{
+            background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+            color: 'white',
+            padding: '60px 40px',
+            borderRadius: '20px',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            <PieChart size={60} style={{ marginBottom: '25px' }} />
             <h2 style={{
-              fontSize: '2.5rem',
+              fontSize: '32px',
               fontWeight: 'bold',
-              color: theme.colors.text,
-              marginBottom: '40px',
-              textAlign: 'center'
+              marginBottom: '20px'
             }}>
-              Upcoming Events
+              Investor Relations Contact
             </h2>
-
-            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-              {upcomingEvents.map((event, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  style={{
-                    background: theme.colors.surface,
-                    padding: '30px',
-                    borderRadius: '16px',
-                    boxShadow: theme.shadows.small,
-                    border: `1px solid ${theme.colors.border}`,
-                    marginBottom: '20px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <div style={{
-                      width: '60px',
-                      height: '60px',
-                      background: `${theme.colors.primary}15`,
-                      borderRadius: '12px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <Calendar size={28} color={theme.colors.primary} />
-                    </div>
-                    <div>
-                      <h3 style={{
-                        fontSize: '1.3rem',
-                        fontWeight: '600',
-                        color: theme.colors.text,
-                        marginBottom: '8px'
-                      }}>
-                        {event.title}
-                      </h3>
-                      <p style={{ color: theme.colors.textSecondary }}>
-                        {event.date} at {event.time}
-                      </p>
-                      <span style={{
-                        background: `${theme.colors.primary}20`,
-                        color: theme.colors.primary,
-                        padding: '4px 12px',
-                        borderRadius: '20px',
-                        fontSize: '0.85rem',
-                        fontWeight: '500'
-                      }}>
-                        {event.type}
-                      </span>
-                    </div>
-                  </div>
-                  <button style={{
-                    background: 'transparent',
-                    border: `2px solid ${theme.colors.primary}`,
-                    color: theme.colors.primary,
-                    padding: '12px 24px',
-                    borderRadius: '8px',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    fontSize: '0.95rem'
-                  }}>
-                    Register
-                  </button>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Contact Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{
-              background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-              color: 'white',
-              padding: '60px 40px',
-              borderRadius: '20px',
-              textAlign: 'center'
+            <p style={{
+              fontSize: '16px',
+              marginBottom: '30px',
+              opacity: 0.9
             }}>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '20px' }}>
-                Investor Contact
-              </h2>
-              <p style={{ fontSize: '1.2rem', marginBottom: '40px', opacity: 0.9 }}>
-                Have questions about our financial performance or investment opportunities?
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>Email</h3>
-                  <p style={{ opacity: 0.9 }}>investors@foodiehub.com</p>
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>Phone</h3>
-                  <p style={{ opacity: 0.9 }}>+1 (555) 123-4567</p>
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>Address</h3>
-                  <p style={{ opacity: 0.9 }}>123 Business Ave, Mumbai, India</p>
-                </div>
-              </div>
+              For investor inquiries, financial information, or to schedule meetings with our IR team
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '15px',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }}>
+              <a
+                href="mailto:ir@foodhub.com"
+                style={{
+                  display: 'inline-block',
+                  background: 'white',
+                  color: '#ff6b35',
+                  padding: '12px 25px',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  fontWeight: 'bold',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
+                onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+              >
+                Email IR Team
+              </a>
+              <button style={{
+                background: 'transparent',
+                color: 'white',
+                border: '2px solid white',
+                padding: '12px 25px',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseOver={(e) => {
+                e.target.style.background = 'white';
+                e.target.style.color = '#ff6b35';
+              }}
+              onMouseOut={(e) => {
+                e.target.style.background = 'transparent';
+                e.target.style.color = 'white';
+              }}
+              >
+                Request Meeting
+              </button>
             </div>
-          </motion.section>
-        </div>
+          </div>
+        </motion.section>
       </div>
-
-      <SimpleFooter />
     </div>
   );
 };

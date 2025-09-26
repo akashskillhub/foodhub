@@ -20,7 +20,7 @@ const AdminPage = () => {
   const { user, isAuthenticated } = useUser();
   const {
     menuItems,
-    allOrders,
+    orders: allOrders,
     addMenuItem,
     updateMenuItem,
     deleteMenuItem,
@@ -145,14 +145,14 @@ const AdminPage = () => {
     setShowAddForm(false);
   };
 
-  const totalRevenue = allOrders.reduce((sum, order) => sum + order.total, 0);
-  const totalCustomers = new Set(allOrders.map(order => order.userId)).size;
-  const pendingOrders = allOrders.filter(order => order.status === 'preparing').length;
+  const totalRevenue = allOrders?.reduce((sum, order) => sum + order.total, 0) || 0;
+  const totalCustomers = allOrders?.length ? new Set(allOrders.map(order => order.userId)).size : 0;
+  const pendingOrders = allOrders?.filter(order => order.status === 'preparing').length || 0;
 
   const stats = [
     {
       label: 'Total Orders',
-      value: allOrders.length,
+      value: allOrders?.length || 0,
       icon: <ShoppingBag size={24} />,
       color: '#ff6b35'
     },
@@ -183,38 +183,77 @@ const AdminPage = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '80px', paddingBottom: '50px', background: '#f8f9fa', minHeight: '100vh' }}>
+    <div style={{
+      paddingTop: '80px',
+      paddingBottom: '50px',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ff6b35 100%)',
+      minHeight: '100vh'
+    }}>
       <div className="container">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: '40px', color: '#333' }}
+          style={{
+            textAlign: 'center',
+            marginBottom: '50px',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: '3.5rem',
+            textShadow: '0 4px 20px rgba(0,0,0,0.3)'
+          }}
         >
-          Admin Dashboard
+          🔐 Admin Dashboard
         </motion.h1>
 
         {/* Tab Navigation */}
         <div style={{
           display: 'flex',
           gap: '10px',
-          marginBottom: '30px',
-          borderBottom: '2px solid #e9ecef',
-          paddingBottom: '0'
+          marginBottom: '40px',
+          justifyContent: 'center',
+          background: 'rgba(255,255,255,0.15)',
+          backdropFilter: 'blur(15px)',
+          borderRadius: '25px',
+          padding: '12px',
+          maxWidth: '700px',
+          margin: '0 auto 40px',
+          border: '1px solid rgba(255,255,255,0.2)'
         }}>
           {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
-                padding: '12px 24px',
-                background: activeTab === tab.id ? '#ff6b35' : 'transparent',
-                color: activeTab === tab.id ? 'white' : '#666',
+                padding: '16px 32px',
                 border: 'none',
-                borderRadius: '8px 8px 0 0',
+                background: activeTab === tab.id ?
+                  'linear-gradient(135deg, #ff6b35, #f7931e)' :
+                  'rgba(255,255,255,0.1)',
+                color: 'white',
+                borderRadius: '18px',
                 cursor: 'pointer',
-                fontSize: '1rem',
-                fontWeight: activeTab === tab.id ? 'bold' : 'normal'
+                fontWeight: activeTab === tab.id ? 'bold' : 'normal',
+                fontSize: '16px',
+                transition: 'all 0.3s ease',
+                boxShadow: activeTab === tab.id ?
+                  '0 8px 25px rgba(255,107,53,0.4)' :
+                  '0 4px 15px rgba(0,0,0,0.1)',
+                transform: activeTab === tab.id ? 'translateY(-2px)' : 'translateY(0)'
+              }}
+              onMouseOver={(e) => {
+                if (activeTab !== tab.id) {
+                  e.target.style.background = 'rgba(255,255,255,0.25)';
+                  e.target.style.transform = 'translateY(-1px)';
+                  e.target.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)';
+                }
+              }}
+              onMouseOut={(e) => {
+                if (activeTab !== tab.id) {
+                  e.target.style.background = 'rgba(255,255,255,0.1)';
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+                }
               }}
             >
               {tab.label}
@@ -239,27 +278,53 @@ const AdminPage = () => {
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -8 }}
                   style={{
-                    background: 'white',
-                    padding: '25px',
-                    borderRadius: '12px',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    padding: '30px',
+                    borderRadius: '20px',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '20px'
+                    gap: '25px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
                   }}
                 >
-                  <div style={{ color: stat.color }}>
+                  <div style={{
+                    background: `linear-gradient(135deg, ${stat.color}, ${stat.color}dd)`,
+                    padding: '20px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    boxShadow: `0 8px 25px ${stat.color}40`
+                  }}>
                     {stat.icon}
                   </div>
                   <div>
-                    <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#333' }}>
+                    <div style={{
+                      fontSize: '2.5rem',
+                      fontWeight: 'bold',
+                      color: 'white',
+                      textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+                      marginBottom: '5px'
+                    }}>
                       {stat.value}
                     </div>
-                    <div style={{ color: '#666', fontSize: '0.9rem' }}>
+                    <div style={{
+                      color: 'rgba(255,255,255,0.8)',
+                      fontSize: '1rem',
+                      fontWeight: '500',
+                      textTransform: 'uppercase',
+                      letterSpacing: '1px'
+                    }}>
                       {stat.label}
                     </div>
                   </div>
@@ -273,42 +338,97 @@ const AdminPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               style={{
-                background: 'white',
-                borderRadius: '12px',
-                padding: '25px',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '25px',
+                padding: '35px',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.25)'
               }}
             >
-              <h3 style={{ marginBottom: '20px', color: '#333' }}>Recent Orders</h3>
-              {allOrders.slice(0, 5).map((order, index) => (
-                <div key={order.id} style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '15px',
-                  borderBottom: index < 4 ? '1px solid #f0f0f0' : 'none',
-                  marginBottom: index < 4 ? '15px' : '0'
-                }}>
+              <h3 style={{
+                marginBottom: '30px',
+                color: 'white',
+                fontSize: '1.8rem',
+                fontWeight: 'bold',
+                textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+                textAlign: 'center'
+              }}>📋 Recent Orders</h3>
+              {allOrders?.length > 0 ? allOrders.slice(0, 5).map((order, index) => (
+                <motion.div
+                  key={order.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02, x: 10 }}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '20px',
+                    marginBottom: '15px',
+                    background: 'rgba(255,255,255,0.15)',
+                    borderRadius: '15px',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    backdropFilter: 'blur(10px)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
                   <div>
-                    <div style={{ fontWeight: 'bold', color: '#333' }}>Order #{order.id}</div>
-                    <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                    <div style={{
+                      fontWeight: 'bold',
+                      color: 'white',
+                      fontSize: '1.1rem',
+                      textShadow: '0 1px 5px rgba(0,0,0,0.3)'
+                    }}>Order #{order.id}</div>
+                    <div style={{
+                      fontSize: '0.9rem',
+                      color: 'rgba(255,255,255,0.7)',
+                      marginTop: '4px'
+                    }}>
                       {new Date(order.date).toLocaleDateString()}
                     </div>
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontWeight: 'bold', color: '#ff6b35' }}>
+                    <div style={{
+                      fontWeight: 'bold',
+                      color: '#ff6b35',
+                      fontSize: '1.2rem',
+                      textShadow: '0 1px 5px rgba(255,107,53,0.5)'
+                    }}>
                       ${order.total.toFixed(2)}
                     </div>
                     <div style={{
-                      fontSize: '0.8rem',
-                      color: order.status === 'delivered' ? '#28a745' : '#ffc107',
-                      textTransform: 'capitalize'
+                      fontSize: '0.85rem',
+                      color: order.status === 'delivered' ? '#4CAF50' : '#FFB74D',
+                      textTransform: 'capitalize',
+                      fontWeight: '600',
+                      marginTop: '4px',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.2)'
                     }}>
                       {order.status}
                     </div>
                   </div>
+                </motion.div>
+              )) : (
+                <div style={{
+                  textAlign: 'center',
+                  color: 'rgba(255,255,255,0.6)',
+                  padding: '60px 20px',
+                  background: 'rgba(255,255,255,0.1)',
+                  borderRadius: '15px',
+                  border: '1px solid rgba(255,255,255,0.2)'
+                }}>
+                  <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📦</div>
+                  <div style={{
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    textShadow: '0 1px 5px rgba(0,0,0,0.3)'
+                  }}>No orders yet</div>
                 </div>
-              ))}
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -549,7 +669,7 @@ const AdminPage = () => {
             transition={{ duration: 0.5 }}
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              {allOrders.map((order, index) => (
+              {allOrders?.length > 0 ? allOrders.map((order, index) => (
                 <motion.div
                   key={order.id}
                   initial={{ opacity: 0, x: -20 }}
@@ -613,7 +733,20 @@ const AdminPage = () => {
                     <div><strong>Items:</strong> {order.items.length} item(s)</div>
                   </div>
                 </motion.div>
-              ))}
+              )) : (
+                <div style={{
+                  textAlign: 'center',
+                  color: '#666',
+                  padding: '60px 20px',
+                  background: 'white',
+                  borderRadius: '12px',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                }}>
+                  <ShoppingBag size={48} style={{ marginBottom: '16px', opacity: 0.5 }} />
+                  <h3 style={{ marginBottom: '8px', color: '#333' }}>No Orders Yet</h3>
+                  <p style={{ margin: 0 }}>Orders will appear here once customers start placing them.</p>
+                </div>
+              )}
             </div>
           </motion.div>
         )}

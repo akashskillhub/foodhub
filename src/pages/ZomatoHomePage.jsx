@@ -233,7 +233,7 @@ const ZomatoHomePage = () => {
       </motion.div>
 
       {/* Filters Section */}
-      <section style={{ background: '#f8f9fa', padding: '20px 0' }}>
+      {/* <section style={{ background: '#f8f9fa', padding: '20px 0' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '30px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#333' }}>
@@ -242,103 +242,103 @@ const ZomatoHomePage = () => {
             </div>
 
             {/* Price Filters */}
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <button
-                onClick={() => handleFilterChange('price', 'under300')}
-                style={{
-                  padding: '8px 16px',
-                  background: selectedFilters.price === 'under300' ? '#ff6b35' : 'white',
-                  color: selectedFilters.price === 'under300' ? 'white' : '#333',
-                  border: '2px solid #ff6b35',
-                  borderRadius: '20px',
-                  cursor: 'pointer'
-                }}
-              >
-                Less than ₹300
-              </button>
-              <button
-                onClick={() => handleFilterChange('price', '300to600')}
-                style={{
-                  padding: '8px 16px',
-                  background: selectedFilters.price === '300to600' ? '#ff6b35' : 'white',
-                  color: selectedFilters.price === '300to600' ? 'white' : '#333',
-                  border: '2px solid #ff6b35',
-                  borderRadius: '20px',
-                  cursor: 'pointer'
-                }}
-              >
-                ₹300-₹600
-              </button>
-            </div>
+      {/* <div style={{ display: 'flex', gap: '12px' }}>
+        <button
+          onClick={() => handleFilterChange('price', 'under300')}
+          style={{
+            padding: '8px 16px',
+            background: selectedFilters.price === 'under300' ? '#ff6b35' : 'white',
+            color: selectedFilters.price === 'under300' ? 'white' : '#333',
+            border: '2px solid #ff6b35',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+        >
+          Less than ₹300
+        </button>
+        <button
+          onClick={() => handleFilterChange('price', '300to600')}
+          style={{
+            padding: '8px 16px',
+            background: selectedFilters.price === '300to600' ? '#ff6b35' : 'white',
+            color: selectedFilters.price === '300to600' ? 'white' : '#333',
+            border: '2px solid #ff6b35',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+        >
+          ₹300-₹600
+        </button>
+      </div> */}
 
-            {/* Diet Filters */}
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <button
-                onClick={() => handleFilterChange('diet', 'veg')}
-                style={{
-                  padding: '8px 16px',
-                  background: selectedFilters.diet === 'veg' ? '#28a745' : 'white',
-                  color: selectedFilters.diet === 'veg' ? 'white' : '#333',
-                  border: '2px solid #28a745',
-                  borderRadius: '20px',
-                  cursor: 'pointer'
-                }}
-              >
-                Pure Veg
-              </button>
-              <button
-                onClick={() => handleFilterChange('diet', 'nonveg')}
-                style={{
-                  padding: '8px 16px',
-                  background: selectedFilters.diet === 'nonveg' ? '#dc3545' : 'white',
-                  color: selectedFilters.diet === 'nonveg' ? 'white' : '#333',
-                  border: '2px solid #dc3545',
-                  borderRadius: '20px',
-                  cursor: 'pointer'
-                }}
-              >
-                Non Veg
-              </button>
-            </div>
+      {/* Diet Filters */}
+      {/* <div style={{ display: 'flex', gap: '12px' }}>
+        <button
+          onClick={() => handleFilterChange('diet', 'veg')}
+          style={{
+            padding: '8px 16px',
+            background: selectedFilters.diet === 'veg' ? '#28a745' : 'white',
+            color: selectedFilters.diet === 'veg' ? 'white' : '#333',
+            border: '2px solid #28a745',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+        >
+          Pure Veg
+        </button>
+        <button
+          onClick={() => handleFilterChange('diet', 'nonveg')}
+          style={{
+            padding: '8px 16px',
+            background: selectedFilters.diet === 'nonveg' ? '#dc3545' : 'white',
+            color: selectedFilters.diet === 'nonveg' ? 'white' : '#333',
+            border: '2px solid #dc3545',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+        >
+          Non Veg
+        </button>
+      </div> */}
 
-            {/* Sort Options */}
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <button
-                onClick={() => handleFilterChange('sort', 'fastdelivery')}
-                style={{
-                  padding: '8px 16px',
-                  background: selectedFilters.sort === 'fastdelivery' ? '#17a2b8' : 'white',
-                  color: selectedFilters.sort === 'fastdelivery' ? 'white' : '#333',
-                  border: '2px solid #17a2b8',
-                  borderRadius: '20px',
-                  cursor: 'pointer'
-                }}
-              >
-                Fast Delivery
-              </button>
-              <button
-                onClick={() => handleFilterChange('sort', 'rating4+')}
-                style={{
-                  padding: '8px 16px',
-                  background: selectedFilters.sort === 'rating4+' ? '#ffc107' : 'white',
-                  color: selectedFilters.sort === 'rating4+' ? '#000' : '#333',
-                  border: '2px solid #ffc107',
-                  borderRadius: '20px',
-                  cursor: 'pointer'
-                }}
-              >
-                Ratings 4.0+
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Sort Options */}
+      {/* <div style={{ display: 'flex', gap: '12px' }}>
+        <button
+          onClick={() => handleFilterChange('sort', 'fastdelivery')}
+          style={{
+            padding: '8px 16px',
+            background: selectedFilters.sort === 'fastdelivery' ? '#17a2b8' : 'white',
+            color: selectedFilters.sort === 'fastdelivery' ? 'white' : '#333',
+            border: '2px solid #17a2b8',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+        >
+          Fast Delivery
+        </button>
+        <button
+          onClick={() => handleFilterChange('sort', 'rating4+')}
+          style={{
+            padding: '8px 16px',
+            background: selectedFilters.sort === 'rating4+' ? '#ffc107' : 'white',
+            color: selectedFilters.sort === 'rating4+' ? '#000' : '#333',
+            border: '2px solid #ffc107',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+        >
+          Ratings 4.0+
+        </button>
+      </div>
+    </div>
+        </div >
+      </section > */}
 
       {/* Main Content */}
       <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
 
         {/* Restaurants Grid */}
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -440,10 +440,10 @@ const ZomatoHomePage = () => {
               </motion.div>
             ))}
           </div>
-        </motion.section>
+        </motion.section> */}
 
         {/* Offers Section */}
-        <section style={{ background: '#f8f9fa', margin: '40px -20px', padding: '40px 20px' }}>
+        {/* <section style={{ background: '#f8f9fa', margin: '40px -20px', padding: '40px 20px' }}>
           <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '30px', color: '#333', textAlign: 'center' }}>
             Special Offers
           </h2>
@@ -488,7 +488,7 @@ const ZomatoHomePage = () => {
               </motion.div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Best Places to Eat Across Cities */}
         <motion.section
@@ -711,75 +711,8 @@ const ZomatoHomePage = () => {
         </section>
       </div>
 
-      {/* Footer */}
-      <footer style={{ background: '#2c3e50', color: 'white', padding: '50px 0 30px' }}>
-        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '40px',
-            marginBottom: '40px'
-          }}>
-            {/* Company Info */}
-            <div>
-              <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px', color: '#ff6b35' }}>
-                FoodieHub
-              </h3>
-              <p style={{ lineHeight: '1.6', marginBottom: '20px' }}>
-                Discover the best food & drinks in Mumbai. Fast delivery, great taste, amazing experience.
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Phone size={16} />
-                <span>Customer Support: 9284123374</span>
-              </div>
-            </div>
 
-            {/* Legal */}
-            <div>
-              <h4 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '16px' }}>Legal</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Terms & Conditions</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Cookie Policy</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Privacy Policy</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Legal</a></li>
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '16px' }}>Company</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Investor Relations</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Careers</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Team</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Contact us</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Help & Support</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Partner with us</a></li>
-              </ul>
-            </div>
-
-            {/* Available Locations */}
-            <div>
-              <h4 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '16px' }}>Available Locations</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Bangalore</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Gurgaon</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Hyderabad</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Delhi</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Mumbai</a></li>
-                <li style={{ marginBottom: '8px' }}><a href="#" style={{ color: 'white', textDecoration: 'none' }}>Pune</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', paddingTop: '20px', borderTop: '1px solid #34495e' }}>
-            <p style={{ margin: 0 }}>
-              © 2024 FoodieHub. All rights reserved. | Made with ❤️ for food lovers
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </div >
   );
 };
 

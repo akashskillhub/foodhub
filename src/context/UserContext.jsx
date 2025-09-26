@@ -13,12 +13,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    id: 1,
-    name: 'Demo User',
-    email: 'demo@example.com'
-  });
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [orders, setOrders] = useState([
     {
       id: 1001,
