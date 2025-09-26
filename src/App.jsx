@@ -9,6 +9,8 @@ import FoodWebsiteHome from './pages/FoodWebsiteHome';
 import MenuPage from './pages/MenuPage';
 import DishDetailPage from './pages/DishDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
+import MyAccountPage from './pages/MyAccountPage';
+import FavouritesPage from './pages/FavouritesPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import AboutPage from './pages/AboutPage';
@@ -57,7 +59,8 @@ function App() {
                   <Route path="/help" element={<HelpPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/signup" element={<SignupPage />} />
-                  <Route path="/account" element={<OrderHistoryPage />} />
+                  <Route path="/account" element={<MyAccountPage />} />
+                  <Route path="/favourites" element={<FavouritesPage />} />
                   <Route path="/orders" element={<OrderHistoryPage />} />
                   <Route path="/admin" element={<AdminPage />} />
                   <Route path="/dashboard" element={<DashboardPage />} />

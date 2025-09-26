@@ -6,15 +6,7 @@ import { Search, MapPin, ShoppingBag, User, ChevronDown, Percent, HelpCircle } f
 import { CartContext } from '../../context/CartContext';
 import { UserContext } from '../../context/UserContext';
 
-/**
- * Swiggy-inspired Navigation Bar Component
- * Features:
- * - Location selector with dropdown
- * - Search functionality for restaurants and dishes
- * - Modern Swiggy-like design
- * - Offers, Help, Cart, and User account sections
- * - Responsive design
- */
+
 function NavigationBar() {
   const { cartItems } = useContext(CartContext);
   const { user, logout } = useContext(UserContext);
@@ -172,7 +164,9 @@ function NavigationBar() {
                   <LinkContainer to="/orders">
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
-                  <NavDropdown.Item>Favourites</NavDropdown.Item>
+                  <LinkContainer to="/favourites">
+                    <NavDropdown.Item>Favourites</NavDropdown.Item>
+                  </LinkContainer>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
                 </NavDropdown>
