@@ -33,6 +33,21 @@ import PrivacyPage from './pages/PrivacyPage';
 import CookiePage from './pages/CookiePage';
 import TermsPage from './pages/TermsPage';
 import DashboardPage from './pages/DashboardPage';
+import ZomatoHomePage from './pages/ZomatoHomePage';
+import CompanyOverviewPage from './pages/CompanyOverviewPage';
+import InvestorRelationsPage from './pages/InvestorRelationsPage';
+import ProjectPage from './pages/ProjectPage';
+import LegalPage from './pages/LegalPage';
+import ContactUsPage from './pages/ContactUsPage';
+import CookiePolicyPage from './pages/CookiePolicyPage';
+import DishDetailsPage from './pages/DishDetailsPage';
+import FixedCartPage from './pages/FixedCartPage';
+import HelpSupportPage from './pages/HelpSupportPage';
+import HomePage from './pages/HomePage';
+import ImprovedMenuPage from './pages/ImprovedMenuPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsConditionsPage from './pages/TermsConditionsPage';
+import CompanyPage from './pages/CompanyPage';
 import './App.css';
 
 /**
@@ -49,47 +64,63 @@ function App() {
           <AdminProvider>
             <ToastProvider>
               <Router>
-              <NavigationBar />
-              <main style={{ minHeight: '80vh' }}>
-                <Routes>
-                  <Route path="/" element={<FoodWebsiteHome />} />
-                  <Route path="/menu" element={<MenuPage />} />
-                  <Route path="/dish/:id" element={<DishDetailPage />} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="/checkout" element={<CheckoutPage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/corporate" element={<CorporatePage />} />
-                  <Route path="/help" element={<HelpPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/signup" element={<SignupPage />} />
-                  <Route path="/account" element={<MyAccountPage />} />
-                  <Route path="/favourites" element={<FavouritesPage />} />
-                  <Route path="/offers" element={<OffersPage />} />
-                  <Route path="/orders" element={<OrderHistoryPage />} />
-                  <Route path="/admin" element={<AdminPage />} />
-                  <Route path="/dashboard" element={<DashboardPage />} />
-                  <Route path="/careers" element={<CareersPage />} />
-                  <Route path="/team" element={<TeamPage />} />
-                  <Route path="/blog" element={<div className="container py-5"><h1>Blog Coming Soon!</h1></div>} />
-                  <Route path="/faq" element={<FAQPage />} />
-                  <Route path="/privacy" element={<PrivacyPage />} />
-                  <Route path="/terms" element={<TermsPage />} />
-                  <Route path="/cookies" element={<CookiePage />} />
-                  <Route path="/legal" element={<div className="container py-5"><h1>Legal Information</h1></div>} />
-                  <Route path="/support" element={<SupportPage />} />
-                  <Route path="/partner" element={<PartnerPage />} />
-                  {/* 404 - Catch all unmatched routes */}
-                  <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-              </main>
-              <Footer />
-              <ToastContainer />
-            </Router>
-          </ToastProvider>
-        </AdminProvider>
-      </CartProvider>
-    </UserProvider>
+                <NavigationBar />
+                <main style={{ minHeight: '80vh' }}>
+                  <Routes>
+                    <Route path="/" element={<FoodWebsiteHome />} />
+                    <Route path="/menu" element={<MenuPage />} />
+                    <Route path="/dish/:id" element={<DishDetailPage />} />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/corporate" element={<CorporatePage />} />
+                    <Route path="/help" element={<HelpPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
+                    <Route path="/account" element={<MyAccountPage />} />
+                    <Route path="/favourites" element={<FavouritesPage />} />
+                    <Route path="/offers" element={<OffersPage />} />
+                    <Route path="/orders" element={<OrderHistoryPage />} />
+                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/dashboard" element={<DashboardPage />} />
+                    <Route path="/careers" element={<CareersPage />} />
+                    <Route path="/team" element={<TeamPage />} />
+                    <Route path="/blog" element={<div className="container py-5"><h1>Blog Coming Soon!</h1></div>} />
+                    <Route path="/faq" element={<FAQPage />} />
+                    <Route path="/privacy" element={<PrivacyPage />} />
+                    <Route path="/terms" element={<TermsPage />} />
+                    <Route path="/cookies" element={<CookiePage />} />
+                    <Route path="/legal" element={<div className="container py-5"><h1>Legal Information</h1></div>} />
+                    <Route path="/support" element={<SupportPage />} />
+                    <Route path="/partner" element={<PartnerPage />} />
+                    <Route path="/zom" element={<ZomatoHomePage />} />
+                    <Route path="/company-overview" element={<CompanyOverviewPage />} />
+                    <Route path="/investor-relations" element={<InvestorRelationsPage />} />
+                    <Route path="/projects" element={<ProjectPage />} />
+                    <Route path="/legal-info" element={<LegalPage />} />
+                    {/* Alternative routes for remaining pages */}
+                    <Route path="/contact-us" element={<ContactUsPage />} />
+                    <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+                    <Route path="/dish-details" element={<DishDetailsPage />} />
+                    <Route path="/fixed-cart" element={<FixedCartPage />} />
+                    <Route path="/help-support" element={<HelpSupportPage />} />
+                    <Route path="/home-alt" element={<HomePage />} />
+                    <Route path="/menu-improved" element={<ImprovedMenuPage />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                    <Route path="/terms-conditions" element={<TermsConditionsPage />} />
+                    <Route path="/company" element={<CompanyPage />} />
+                    {/* 404 - Catch all unmatched routes */}
+                    <Route path="*" element={<NotFoundPage />} />
+                  </Routes>
+                </main>
+                <Footer />
+                <ToastContainer />
+              </Router>
+            </ToastProvider>
+          </AdminProvider>
+        </CartProvider>
+      </UserProvider>
     </div>
   );
 }

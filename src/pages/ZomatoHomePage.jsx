@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Star, Clock, MapPin, Phone, Filter } from 'lucide-react';
 import { motion } from 'framer-motion';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
 
 const ZomatoHomePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -166,9 +165,72 @@ const ZomatoHomePage = () => {
   });
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      {/* Navbar */}
-      <SimpleNavbar />
+    <div style={{ fontFamily: 'Arial, sans-serif', paddingTop: '80px' }}>
+      {/* Hero Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+          padding: '60px 20px',
+          textAlign: 'center',
+          color: 'white'
+        }}
+      >
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '20px' }}
+        >
+          🍕 FoodieHub
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          style={{ fontSize: '20px', marginBottom: '30px' }}
+        >
+          Discover the best food & drinks in your city
+        </motion.p>
+
+        {/* Search Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          style={{
+            maxWidth: '600px',
+            margin: '0 auto',
+            position: 'relative'
+          }}
+        >
+          <Search size={20} style={{
+            position: 'absolute',
+            left: '15px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: '#666'
+          }} />
+          <input
+            type="text"
+            placeholder="Search for restaurants, cuisine or dishes"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '15px 15px 15px 45px',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '16px',
+              background: 'white',
+              color: '#333',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+            }}
+          />
+        </motion.div>
+      </motion.div>
 
       {/* Filters Section */}
       <section style={{ background: '#f8f9fa', padding: '20px 0' }}>

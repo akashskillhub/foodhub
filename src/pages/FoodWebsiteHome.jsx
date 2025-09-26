@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import MenuItem from '../components/common/MenuItem';
 import RestaurantListing from '../components/restaurant/RestaurantListing';
-
+import HeroBanner from '../components/home/HeroBanner';
 // Featured dishes data
 const featuredDishes = [
   {
@@ -648,7 +648,7 @@ function FoodWebsiteHome() {
 
       </Container>
 
-
+      <HeroBanner />
 
       {/* Best Places to Eat Across Cities Section */}
       <motion.section

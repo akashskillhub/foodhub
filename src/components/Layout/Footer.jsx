@@ -45,7 +45,7 @@ const Footer = () => {
       <Container>
         <Row>
           {/* Brand & Description */}
-          <Col lg={3} md={6} className="mb-4">
+          <Col lg={2} md={6} className="mb-4">
             <h5 className="mb-3" style={{ color: '#fc8019' }}>🍕 FoodHub</h5>
             <p className="text-secondary">
               Delicious food delivered to your doorstep. Fresh ingredients,
@@ -79,7 +79,7 @@ const Footer = () => {
           </Col>
 
           {/* Company */}
-          <Col lg={2} md={6} className="mb-4">
+          <Col lg={2} md={4} className="mb-4">
             <h6 className="mb-3 fw-bold">Company</h6>
             <Nav className="flex-column">
               <LinkContainer to="/">
@@ -109,9 +109,56 @@ const Footer = () => {
             </Nav>
           </Col>
 
+          {/* More Pages */}
+          <Col lg={2} md={4} className="mb-4">
+            <h6 className="mb-3 fw-bold">More Pages</h6>
+            <Nav className="flex-column">
+              <LinkContainer to="/zom">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Zomato Style</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/company-overview">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Company Overview</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/investor-relations">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Investor Relations</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/projects">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Projects</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/legal-info">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Legal Info</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/admin">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">🔐 Admin</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Col>
+
+          {/* Alternative Pages */}
+          <Col lg={2} md={4} className="mb-4">
+            <h6 className="mb-3 fw-bold">Alternative Pages</h6>
+            <Nav className="flex-column">
+              <LinkContainer to="/contact-us">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Contact Us Alt</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/help-support">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Help Support</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/home-alt">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Home Alt</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/menu-improved">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Menu Improved</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/company">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Company</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Col>
+
 
           {/* Help & Support */}
-          <Col lg={2} md={6} className="mb-4">
+          <Col lg={2} md={4} className="mb-4">
             <h6 className="mb-3 fw-bold">Help & Support</h6>
             <Nav className="flex-column">
               <LinkContainer to="/help">
@@ -136,7 +183,7 @@ const Footer = () => {
           </Col>
 
           {/* Contact & Newsletter */}
-          <Col lg={3} md={12} className="mb-4">
+          <Col lg={2} md={12} className="mb-4">
             <h6 className="mb-3 fw-bold">Stay Connected</h6>
             <div className="text-secondary small mb-3">
               <div className="d-flex align-items-center mb-2">

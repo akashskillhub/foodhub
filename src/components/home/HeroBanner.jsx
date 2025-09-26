@@ -62,8 +62,8 @@ const HeroBanner = () => {
           animate="visible"
         >
           <motion.h1 className="hero-title" variants={itemVariants}>
-            Delicious Food <br />
-            <span className="hero-highlight">Delivered Fast</span> 🍕
+
+            <span className="hero-highlight">Delicious Food <br />Delivered Fast</span> 🍕
           </motion.h1>
 
           <motion.p className="hero-description" variants={itemVariants}>
@@ -96,20 +96,7 @@ const HeroBanner = () => {
             </Link>
           </motion.div>
 
-          <motion.div className="hero-stats" variants={itemVariants}>
-            <div className="stat">
-              <span className="stat-number">50k+</span>
-              <span className="stat-label">Happy Customers</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">1000+</span>
-              <span className="stat-label">Daily Orders</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">4.8</span>
-              <span className="stat-label">Average Rating</span>
-            </div>
-          </motion.div>
+
         </motion.div>
 
         <motion.div
@@ -118,7 +105,7 @@ const HeroBanner = () => {
           animate="animate"
         >
           <img
-            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=600&fit=crop&crop=center"
+            src="https://plus.unsplash.com/premium_photo-1733259709671-9dbf22bf02cc?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Delicious Pizza"
             className="hero-food-image"
           />
