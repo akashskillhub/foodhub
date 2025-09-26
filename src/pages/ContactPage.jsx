@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, MessageCircle, Send, Heart, Star } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -93,7 +93,6 @@ const ContactPage = () => {
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="contact-icons"
               style={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -113,60 +112,15 @@ const ContactPage = () => {
                 }}
                 style={{
                   background: 'rgba(255,255,255,0.2)',
-                  padding: '15px',
+                  padding: '20px',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  fontSize: '32px'
                 }}
               >
-                <MessageCircle size={32} color="white" />
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 5, -5, 0]
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: 0.5
-                }}
-                style={{
-                  background: 'rgba(255,255,255,0.2)',
-                  padding: '15px',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <Heart size={32} color="white" />
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, -10, 10, 0]
-                }}
-                transition={{
-                  duration: 2.2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: 1
-                }}
-                style={{
-                  background: 'rgba(255,255,255,0.2)',
-                  padding: '15px',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <Star size={32} color="white" />
+                📞
               </motion.div>
             </motion.div>
 
@@ -210,7 +164,7 @@ const ContactPage = () => {
                   delay: 1.5
                 }}
               >
-
+                💬
               </motion.span>
             </motion.h1>
 
@@ -330,7 +284,7 @@ const ContactPage = () => {
       {/* Contact Form & Map */}
       <section style={{ padding: '80px 0' }}>
         <div className="container">
-          <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}>
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}

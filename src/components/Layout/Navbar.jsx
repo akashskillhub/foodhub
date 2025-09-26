@@ -59,7 +59,7 @@ function NavigationBar() {
             </LinkContainer>
 
             {/* Location Selector */}
-            <div className="d-flex align-items-center me-4" style={{ minWidth: '280px' }}>
+            <div className="d-flex align-items-center me-4 hide-mobile" style={{ minWidth: '280px' }}>
               <Dropdown>
                 <Dropdown.Toggle
                   variant="link"
@@ -96,7 +96,7 @@ function NavigationBar() {
             </div>
 
             {/* Search Bar */}
-            <div className="flex-grow-1 mx-4" style={{ maxWidth: '500px' }}>
+            <div className="flex-grow-1 mx-4 hide-mobile" style={{ maxWidth: '500px' }}>
               <Form onSubmit={handleSearch}>
                 <InputGroup>
                   <Form.Control
@@ -132,7 +132,7 @@ function NavigationBar() {
 
               {/* Offers */}
               <LinkContainer to="/offers">
-                <Nav.Link className="d-flex align-items-center text-dark px-0">
+                <Nav.Link className="d-flex align-items-center text-dark px-0 hide-mobile">
                   <Percent size={18} className="me-2" />
                   <span className="fw-medium">Offers</span>
                   <Badge bg="warning" className="ms-1 text-dark" style={{ fontSize: '10px' }}>NEW</Badge>
@@ -141,7 +141,7 @@ function NavigationBar() {
 
               {/* Help */}
               <LinkContainer to="/help">
-                <Nav.Link className="d-flex align-items-center text-dark px-0">
+                <Nav.Link className="d-flex align-items-center text-dark px-0 hide-mobile">
                   <HelpCircle size={18} className="me-2" />
                   <span className="fw-medium">Help</span>
                 </Nav.Link>
