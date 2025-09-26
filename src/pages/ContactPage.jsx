@@ -42,9 +42,10 @@ const ContactPage = () => {
     },
     {
       icon: <MapPin size={24} />,
-      title: 'Address',
-      details: ['123 Food Street', 'Culinary District, CD 12345'],
-      subtitle: 'Visit our main office'
+      title: 'Visit Our Location',
+      details: ['SKILLHUB, 3rd Floor, Veer Shanti Building', 'Kranti Chowk, Kotla Colony, Samta Nagar', 'Chhatrapati Sambhajinagar, Maharashtra 431001'],
+      subtitle: 'Above Primia Hero Showroom, beside Sumit Hall',
+      mapUrl: 'https://www.google.com/maps/dir//SKILLHUB,+3rd+Floor,+Veer+Shanti+Building,+Kranti+Chowk,+above+Primia+Hero+Showroom,+beside+sumit+hall,+Kotla+Colony,+Samta+Nagar,+Chhatrapati+Sambhajinagar,+Maharashtra+431001/@19.8731211,75.2450025,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3bdb99178077eb41:0x61cae7bcf705976e!2m2!1d75.3274042!2d19.87314?entry=ttu&g_ep=EgoyMDI1MDkyMy4wIKXMDSoASAFQAw%3D%3D'
     },
     {
       icon: <Clock size={24} />,
@@ -275,6 +276,29 @@ const ContactPage = () => {
                   <p key={idx} style={{ margin: '5px 0', color: '#666', fontWeight: 'bold' }}>{detail}</p>
                 ))}
                 <p style={{ color: '#888', fontSize: '0.9rem', marginTop: '10px' }}>{info.subtitle}</p>
+                {info.mapUrl && (
+                  <a
+                    href={info.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-block',
+                      marginTop: '15px',
+                      padding: '8px 16px',
+                      background: '#ff6b35',
+                      color: 'white',
+                      textDecoration: 'none',
+                      borderRadius: '8px',
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      transition: 'background 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => e.target.style.background = '#e55a2b'}
+                    onMouseLeave={(e) => e.target.style.background = '#ff6b35'}
+                  >
+                    📍 View on Google Maps
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
