@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { UserProvider } from './context/UserContext';
@@ -7,47 +7,51 @@ import { ToastProvider } from './context/ToastContext';
 import ToastContainer from './components/ui/ToastContainer';
 import NavigationBar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import FoodWebsiteHome from './pages/FoodWebsiteHome';
-import MenuPage from './pages/MenuPage';
-import DishDetailPage from './pages/DishDetailPage';
-import NotFoundPage from './pages/NotFoundPage';
-import MyAccountPage from './pages/MyAccountPage';
-import FavouritesPage from './pages/FavouritesPage';
-import OffersPage from './pages/OffersPage';
-import CartPage from './pages/CartPage';
-import CheckoutPage from './pages/CheckoutPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import CorporatePage from './pages/CorporatePage';
-import HelpPage from './pages/HelpPage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import OrderHistoryPage from './pages/OrderHistoryPage';
-import AdminPage from './pages/AdminPage';
-import CareersPage from './pages/CareersPage';
-import TeamPage from './pages/TeamPage';
-import FAQPage from './pages/FAQPage';
-import SupportPage from './pages/SupportPage';
-import PartnerPage from './pages/PartnerPage';
-import PrivacyPage from './pages/PrivacyPage';
-import CookiePage from './pages/CookiePage';
-import TermsPage from './pages/TermsPage';
-import DashboardPage from './pages/DashboardPage';
-import ZomatoHomePage from './pages/ZomatoHomePage';
-import CompanyOverviewPage from './pages/CompanyOverviewPage';
-import InvestorRelationsPage from './pages/InvestorRelationsPage';
-import ProjectPage from './pages/ProjectPage';
-import LegalPage from './pages/LegalPage';
-import ContactUsPage from './pages/ContactUsPage';
-import CookiePolicyPage from './pages/CookiePolicyPage';
-import DishDetailsPage from './pages/DishDetailsPage';
-import FixedCartPage from './pages/FixedCartPage';
-import HelpSupportPage from './pages/HelpSupportPage';
-import HomePage from './pages/HomePage';
-import ImprovedMenuPage from './pages/ImprovedMenuPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsConditionsPage from './pages/TermsConditionsPage';
-import CompanyPage from './pages/CompanyPage';
+import ErrorBoundary from './components/ErrorBoundary';
+import LoadingSpinner from './components/LoadingSpinner';
+
+// Lazy load all pages for better performance
+const FoodWebsiteHome = lazy(() => import('./pages/FoodWebsiteHome'));
+const MenuPage = lazy(() => import('./pages/MenuPage'));
+const DishDetailPage = lazy(() => import('./pages/DishDetailPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const MyAccountPage = lazy(() => import('./pages/MyAccountPage'));
+const FavouritesPage = lazy(() => import('./pages/FavouritesPage'));
+const OffersPage = lazy(() => import('./pages/OffersPage'));
+const CartPage = lazy(() => import('./pages/CartPage'));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const CorporatePage = lazy(() => import('./pages/CorporatePage'));
+const HelpPage = lazy(() => import('./pages/HelpPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const SignupPage = lazy(() => import('./pages/SignupPage'));
+const OrderHistoryPage = lazy(() => import('./pages/OrderHistoryPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
+const CareersPage = lazy(() => import('./pages/CareersPage'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
+const FAQPage = lazy(() => import('./pages/FAQPage'));
+const SupportPage = lazy(() => import('./pages/SupportPage'));
+const PartnerPage = lazy(() => import('./pages/PartnerPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const CookiePage = lazy(() => import('./pages/CookiePage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const RestaurantHomePage = lazy(() => import('./pages/RestaurantHomePage'));
+const CompanyOverviewPage = lazy(() => import('./pages/CompanyOverviewPage'));
+const InvestorRelationsPage = lazy(() => import('./pages/InvestorRelationsPage'));
+const ProjectPage = lazy(() => import('./pages/ProjectPage'));
+const LegalPage = lazy(() => import('./pages/LegalPage'));
+const ContactUsPage = lazy(() => import('./pages/ContactUsPage'));
+const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
+const DishDetailsPage = lazy(() => import('./pages/DishDetailsPage'));
+const FixedCartPage = lazy(() => import('./pages/FixedCartPage'));
+const HelpSupportPage = lazy(() => import('./pages/HelpSupportPage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ImprovedMenuPage = lazy(() => import('./pages/ImprovedMenuPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsConditionsPage = lazy(() => import('./pages/TermsConditionsPage'));
+const CompanyPage = lazy(() => import('./pages/CompanyPage'));
 import './App.css';
 
 /**
@@ -58,15 +62,17 @@ import './App.css';
  */
 function App() {
   return (
-    <div className="App">
-      <UserProvider>
-        <CartProvider>
-          <AdminProvider>
-            <ToastProvider>
-              <Router>
-                <NavigationBar />
-                <main style={{ minHeight: '80vh' }}>
-                  <Routes>
+    <ErrorBoundary>
+      <div className="App">
+        <UserProvider>
+          <CartProvider>
+            <AdminProvider>
+              <ToastProvider>
+                <Router>
+                  <NavigationBar />
+                  <main style={{ minHeight: '80vh' }}>
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Routes>
                     <Route path="/" element={<FoodWebsiteHome />} />
                     <Route path="/menu" element={<MenuPage />} />
                     <Route path="/dish/:id" element={<DishDetailPage />} />
@@ -94,7 +100,7 @@ function App() {
                     <Route path="/legal" element={<div className="container py-5"><h1>Legal Information</h1></div>} />
                     <Route path="/support" element={<SupportPage />} />
                     <Route path="/partner" element={<PartnerPage />} />
-                    <Route path="/zom" element={<ZomatoHomePage />} />
+                    <Route path="/restaurant-home" element={<RestaurantHomePage />} />
                     <Route path="/company-overview" element={<CompanyOverviewPage />} />
                     <Route path="/investor-relations" element={<InvestorRelationsPage />} />
                     <Route path="/projects" element={<ProjectPage />} />
@@ -112,16 +118,18 @@ function App() {
                     <Route path="/company" element={<CompanyPage />} />
                     {/* 404 - Catch all unmatched routes */}
                     <Route path="*" element={<NotFoundPage />} />
-                  </Routes>
-                </main>
-                <Footer />
-                <ToastContainer />
-              </Router>
-            </ToastProvider>
-          </AdminProvider>
-        </CartProvider>
-      </UserProvider>
-    </div>
+                      </Routes>
+                    </Suspense>
+                  </main>
+                  <Footer />
+                  <ToastContainer />
+                </Router>
+              </ToastProvider>
+            </AdminProvider>
+          </CartProvider>
+        </UserProvider>
+      </div>
+    </ErrorBoundary>
   );
 }
 

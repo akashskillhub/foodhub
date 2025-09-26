@@ -113,11 +113,8 @@ const Footer = () => {
           <Col lg={2} md={4} className="mb-4">
             <h6 className="mb-3 fw-bold">More Pages</h6>
             <Nav className="flex-column">
-              <LinkContainer to="/zom">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Zomato Style</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/company-overview">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Company Overview</Nav.Link>
+              <LinkContainer to="/restaurant-home">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Restaurant Home</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/investor-relations">
                 <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Investor Relations</Nav.Link>
@@ -138,17 +135,14 @@ const Footer = () => {
           <Col lg={2} md={4} className="mb-4">
             <h6 className="mb-3 fw-bold">Alternative Pages</h6>
             <Nav className="flex-column">
-              <LinkContainer to="/contact-us">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Contact Us Alt</Nav.Link>
-              </LinkContainer>
               <LinkContainer to="/help-support">
                 <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Help Support</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/home-alt">
-                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Home Alt</Nav.Link>
-              </LinkContainer>
               <LinkContainer to="/menu-improved">
                 <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Menu Improved</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/company-overview">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Company Overview</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/company">
                 <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Company</Nav.Link>

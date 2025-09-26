@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle, Send, Heart, Star } from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -80,7 +80,7 @@ const ContactPage = () => {
   return (
     <div style={{ paddingTop: '80px', paddingBottom: '50px' }}>
       {/* Hero Section */}
-      <section style={{ background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)', color: 'white', padding: '60px 0' }}>
+      <section className="hero-section" style={{ background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)', color: 'white', padding: '60px 0' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -88,10 +88,171 @@ const ContactPage = () => {
             transition={{ duration: 0.8 }}
             style={{ textAlign: 'center' }}
           >
-            <h1 style={{ fontSize: '3rem', marginBottom: '20px', fontWeight: 'bold' }}>Get In Touch</h1>
-            <p style={{ fontSize: '1.2rem', opacity: 0.9 }}>
+            {/* Animated Top Icons */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="contact-icons"
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '20px',
+                marginBottom: '30px'
+              }}
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 10, -10, 0],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+                style={{
+                  background: 'rgba(255,255,255,0.2)',
+                  padding: '15px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <MessageCircle size={32} color="white" />
+              </motion.div>
+
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 5, -5, 0]
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: 0.5
+                }}
+                style={{
+                  background: 'rgba(255,255,255,0.2)',
+                  padding: '15px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Heart size={32} color="white" />
+              </motion.div>
+
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, -10, 10, 0]
+                }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: 1
+                }}
+                style={{
+                  background: 'rgba(255,255,255,0.2)',
+                  padding: '15px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Star size={32} color="white" />
+              </motion.div>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{
+                fontSize: '3rem',
+                marginBottom: '20px',
+                fontWeight: 'bold',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '15px'
+              }}
+            >
+              <motion.span
+                animate={{
+                  rotate: [0, 15, -15, 0],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              >
+                📞
+              </motion.span>
+              Get In Touch
+              <motion.span
+                animate={{
+                  rotate: [0, -15, 15, 0],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: 1.5
+                }}
+              >
+
+              </motion.span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              style={{
+                fontSize: '1.2rem',
+                opacity: 0.9,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                flexWrap: 'wrap'
+              }}
+            >
+              <motion.span
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              >
+                ❤️
+              </motion.span>
               We'd love to hear from you! Reach out with any questions, feedback, or suggestions.
-            </p>
+              <motion.span
+                animate={{
+                  rotate: [0, 10, -10, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: 1
+                }}
+              >
+                ✨
+              </motion.span>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -115,14 +276,46 @@ const ContactPage = () => {
                   border: '1px solid #f0f0f0'
                 }}
               >
-                <div style={{
-                  color: '#ff6b35',
-                  marginBottom: '20px',
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}>
-                  {info.icon}
-                </div>
+                <motion.div
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: [0, -5, 5, 0]
+                  }}
+                  transition={{
+                    duration: 0.3
+                  }}
+                  style={{
+                    color: '#ff6b35',
+                    marginBottom: '20px',
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <motion.div
+                    animate={{
+                      y: [0, -2, 0],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      delay: index * 0.5
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #ff6b35, #f7931e)',
+                      color: 'white',
+                      padding: '15px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 4px 15px rgba(255,107,53,0.3)'
+                    }}
+                  >
+                    {info.icon}
+                  </motion.div>
+                </motion.div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '15px', color: '#333' }}>{info.title}</h3>
                 {info.details.map((detail, idx) => (
                   <p key={idx} style={{ margin: '5px 0', color: '#666', fontWeight: 'bold' }}>{detail}</p>
@@ -137,7 +330,7 @@ const ContactPage = () => {
       {/* Contact Form & Map */}
       <section style={{ padding: '80px 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}>
+          <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}>
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -150,7 +343,49 @@ const ContactPage = () => {
                 boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
               }}
             >
-              <h2 style={{ fontSize: '2rem', marginBottom: '30px', color: '#333' }}>Send us a Message</h2>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                style={{
+                  fontSize: '2rem',
+                  marginBottom: '30px',
+                  color: '#333',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '12px'
+                }}
+              >
+                <motion.span
+                  animate={{
+                    x: [0, 5, -5, 0],
+                    rotate: [0, 10, -10, 0]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  <Send size={28} color="#ff6b35" />
+                </motion.span>
+                Send us a Message
+                <motion.span
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, -10, 10, 0]
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    delay: 1
+                  }}
+                >
+                  ✉️
+                </motion.span>
+              </motion.h2>
 
               {submitted && (
                 <div style={{
@@ -255,7 +490,42 @@ const ContactPage = () => {
                     cursor: isSubmitting ? 'not-allowed' : 'pointer'
                   }}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? (
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <motion.span
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                      >
+                        🔄
+                      </motion.span>
+                      Sending...
+                    </span>
+                  ) : (
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <motion.span
+                        whileHover={{
+                          x: 3,
+                          transition: { duration: 0.2 }
+                        }}
+                      >
+                        <Send size={18} />
+                      </motion.span>
+                      Send Message
+                      <motion.span
+                        animate={{
+                          x: [0, 2, 0],
+                          opacity: [1, 0.7, 1]
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }}
+                      >
+                        🚀
+                      </motion.span>
+                    </span>
+                  )}
                 </button>
               </form>
             </motion.div>

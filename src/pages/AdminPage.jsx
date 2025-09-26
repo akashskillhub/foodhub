@@ -186,73 +186,62 @@ const AdminPage = () => {
     <div style={{
       paddingTop: '80px',
       paddingBottom: '50px',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ff6b35 100%)',
+      background: '#f5f5f5',
       minHeight: '100vh'
     }}>
       <div className="container">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{
-            textAlign: 'center',
-            marginBottom: '50px',
-            color: 'white',
-            fontWeight: 'bold',
-            fontSize: '3.5rem',
-            textShadow: '0 4px 20px rgba(0,0,0,0.3)'
-          }}
-        >
-          🔐 Admin Dashboard
-        </motion.h1>
+        <h1 style={{
+          textAlign: 'center',
+          marginBottom: '40px',
+          color: '#333',
+          fontWeight: 'bold',
+          fontSize: '2.5rem',
+          borderBottom: '3px solid #ff6b35',
+          paddingBottom: '15px',
+          display: 'inline-block',
+          width: '100%'
+        }}>
+          Admin Dashboard
+        </h1>
 
         {/* Tab Navigation */}
         <div style={{
           display: 'flex',
-          gap: '10px',
-          marginBottom: '40px',
+          gap: '0',
+          marginBottom: '30px',
           justifyContent: 'center',
-          background: 'rgba(255,255,255,0.15)',
-          backdropFilter: 'blur(15px)',
-          borderRadius: '25px',
-          padding: '12px',
-          maxWidth: '700px',
-          margin: '0 auto 40px',
-          border: '1px solid rgba(255,255,255,0.2)'
+          background: 'white',
+          borderRadius: '8px',
+          border: '1px solid #ddd',
+          overflow: 'hidden',
+          maxWidth: '600px',
+          margin: '0 auto 30px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}>
           {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
-                padding: '16px 32px',
+                padding: '12px 24px',
                 border: 'none',
-                background: activeTab === tab.id ?
-                  'linear-gradient(135deg, #ff6b35, #f7931e)' :
-                  'rgba(255,255,255,0.1)',
-                color: 'white',
-                borderRadius: '18px',
+                borderRight: tab.id !== 'orders' ? '1px solid #ddd' : 'none',
+                background: activeTab === tab.id ? '#ff6b35' : 'white',
+                color: activeTab === tab.id ? 'white' : '#666',
                 cursor: 'pointer',
                 fontWeight: activeTab === tab.id ? 'bold' : 'normal',
-                fontSize: '16px',
-                transition: 'all 0.3s ease',
-                boxShadow: activeTab === tab.id ?
-                  '0 8px 25px rgba(255,107,53,0.4)' :
-                  '0 4px 15px rgba(0,0,0,0.1)',
-                transform: activeTab === tab.id ? 'translateY(-2px)' : 'translateY(0)'
+                fontSize: '14px',
+                transition: 'all 0.2s ease',
+                flex: '1'
               }}
               onMouseOver={(e) => {
                 if (activeTab !== tab.id) {
-                  e.target.style.background = 'rgba(255,255,255,0.25)';
-                  e.target.style.transform = 'translateY(-1px)';
-                  e.target.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)';
+                  e.target.style.background = '#f8f9fa';
                 }
               }}
               onMouseOut={(e) => {
                 if (activeTab !== tab.id) {
-                  e.target.style.background = 'rgba(255,255,255,0.1)';
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+                  e.target.style.background = 'white';
                 }
               }}
             >
@@ -276,116 +265,103 @@ const AdminPage = () => {
               marginBottom: '40px'
             }}>
               {stats.map((stat, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -8 }}
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255,255,255,0.3)',
-                    padding: '30px',
-                    borderRadius: '20px',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+                    background: 'white',
+                    border: '1px solid #ddd',
+                    padding: '25px',
+                    borderRadius: '8px',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '25px',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
+                    gap: '20px',
+                    transition: 'box-shadow 0.2s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                   }}
                 >
                   <div style={{
-                    background: `linear-gradient(135deg, ${stat.color}, ${stat.color}dd)`,
-                    padding: '20px',
-                    borderRadius: '50%',
+                    background: stat.color,
+                    padding: '15px',
+                    borderRadius: '8px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'white',
-                    boxShadow: `0 8px 25px ${stat.color}40`
+                    color: 'white'
                   }}>
                     {stat.icon}
                   </div>
                   <div>
                     <div style={{
-                      fontSize: '2.5rem',
+                      fontSize: '2rem',
                       fontWeight: 'bold',
-                      color: 'white',
-                      textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+                      color: '#333',
                       marginBottom: '5px'
                     }}>
                       {stat.value}
                     </div>
                     <div style={{
-                      color: 'rgba(255,255,255,0.8)',
-                      fontSize: '1rem',
-                      fontWeight: '500',
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px'
+                      color: '#666',
+                      fontSize: '0.9rem',
+                      fontWeight: '500'
                     }}>
                       {stat.label}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Recent Orders */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1))',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.3)',
-                borderRadius: '25px',
-                padding: '35px',
-                boxShadow: '0 12px 40px rgba(0,0,0,0.25)'
-              }}
-            >
+            <div style={{
+              background: 'white',
+              border: '1px solid #ddd',
+              borderRadius: '8px',
+              padding: '25px',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}>
               <h3 style={{
-                marginBottom: '30px',
-                color: 'white',
-                fontSize: '1.8rem',
+                marginBottom: '20px',
+                color: '#333',
+                fontSize: '1.3rem',
                 fontWeight: 'bold',
-                textShadow: '0 2px 10px rgba(0,0,0,0.3)',
-                textAlign: 'center'
-              }}>📋 Recent Orders</h3>
+                borderBottom: '2px solid #ff6b35',
+                paddingBottom: '10px'
+              }}>Recent Orders</h3>
               {allOrders?.length > 0 ? allOrders.slice(0, 5).map((order, index) => (
-                <motion.div
+                <div
                   key={order.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: 10 }}
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    padding: '20px',
-                    marginBottom: '15px',
-                    background: 'rgba(255,255,255,0.15)',
-                    borderRadius: '15px',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    backdropFilter: 'blur(10px)',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
+                    padding: '15px',
+                    marginBottom: index < 4 ? '15px' : '0',
+                    borderBottom: index < 4 ? '1px solid #f0f0f0' : 'none',
+                    transition: 'background 0.2s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = '#f8f9fa';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = 'transparent';
                   }}
                 >
                   <div>
                     <div style={{
                       fontWeight: 'bold',
-                      color: 'white',
-                      fontSize: '1.1rem',
-                      textShadow: '0 1px 5px rgba(0,0,0,0.3)'
+                      color: '#333',
+                      fontSize: '1rem'
                     }}>Order #{order.id}</div>
                     <div style={{
-                      fontSize: '0.9rem',
-                      color: 'rgba(255,255,255,0.7)',
-                      marginTop: '4px'
+                      fontSize: '0.85rem',
+                      color: '#666',
+                      marginTop: '2px'
                     }}>
                       {new Date(order.date).toLocaleDateString()}
                     </div>
@@ -394,42 +370,35 @@ const AdminPage = () => {
                     <div style={{
                       fontWeight: 'bold',
                       color: '#ff6b35',
-                      fontSize: '1.2rem',
-                      textShadow: '0 1px 5px rgba(255,107,53,0.5)'
+                      fontSize: '1rem'
                     }}>
                       ${order.total.toFixed(2)}
                     </div>
                     <div style={{
-                      fontSize: '0.85rem',
-                      color: order.status === 'delivered' ? '#4CAF50' : '#FFB74D',
+                      fontSize: '0.8rem',
+                      color: order.status === 'delivered' ? '#28a745' : '#ffc107',
                       textTransform: 'capitalize',
-                      fontWeight: '600',
-                      marginTop: '4px',
-                      textShadow: '0 1px 3px rgba(0,0,0,0.2)'
+                      fontWeight: '500',
+                      marginTop: '2px'
                     }}>
                       {order.status}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               )) : (
                 <div style={{
                   textAlign: 'center',
-                  color: 'rgba(255,255,255,0.6)',
-                  padding: '60px 20px',
-                  background: 'rgba(255,255,255,0.1)',
-                  borderRadius: '15px',
-                  border: '1px solid rgba(255,255,255,0.2)'
+                  color: '#666',
+                  padding: '40px 20px'
                 }}>
-                  <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📦</div>
+                  <div style={{ fontSize: '2rem', marginBottom: '10px' }}>📦</div>
                   <div style={{
-                    fontSize: '1.2rem',
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textShadow: '0 1px 5px rgba(0,0,0,0.3)'
+                    fontSize: '1rem',
+                    fontWeight: '500'
                   }}>No orders yet</div>
                 </div>
               )}
-            </motion.div>
+            </div>
           </motion.div>
         )}
 

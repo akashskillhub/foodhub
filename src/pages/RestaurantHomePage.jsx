@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search, Star, Clock, MapPin, Phone, Filter } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const ZomatoHomePage = () => {
+const RestaurantHomePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilters, setSelectedFilters] = useState({
     price: '',
@@ -716,4 +716,4 @@ const ZomatoHomePage = () => {
   );
 };
 
-export default ZomatoHomePage;
+export default RestaurantHomePage;

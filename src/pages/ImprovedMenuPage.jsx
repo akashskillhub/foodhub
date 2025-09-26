@@ -4,8 +4,7 @@ import { Star, Search, Filter, Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAdmin } from '../context/AdminContext';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
-import SimpleFooter from '../components/ui/SimpleFooter';
+// Removed problematic SimpleNavbar and SimpleFooter imports
 
 const ImprovedMenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -58,8 +57,7 @@ const ImprovedMenuPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', background: '#f8f9fa' }}>
-      <SimpleNavbar />
+    <div style={{ fontFamily: 'Arial, sans-serif', background: '#f8f9fa', minHeight: '100vh', paddingTop: '100px' }}>
 
       {/* Hero Section */}
       <section style={{
@@ -427,8 +425,6 @@ const ImprovedMenuPage = () => {
           )}
         </div>
       </section>
-
-      <SimpleFooter />
     </div>
   );
 };
