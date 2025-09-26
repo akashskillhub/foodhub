@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
-
+// import FeaturedDishes from '../components/home/FeaturedDishes'; 
 const MenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [favouriteItems, setFavouriteItems] = useState([]);
@@ -198,7 +198,7 @@ const MenuPage = () => {
             </div>
           </Col>
         </Row>
-
+        {/* <FeaturedDishes /> */}
         {/* Menu Items */}
         <Row>
           {filteredItems.map((item) => (

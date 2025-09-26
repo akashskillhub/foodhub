@@ -1,259 +1,431 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Target, Users, Award, Globe, TrendingUp } from 'lucide-react';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
-import SimpleFooter from '../components/ui/SimpleFooter';
+import { Building2, Target, Users, Award, Globe, TrendingUp, Heart, Zap } from 'lucide-react';
 
 const CompanyPage = () => {
   const milestones = [
-    { year: '2020', event: 'FoodieHub Founded', description: 'Started as a small local delivery service' },
-    { year: '2021', event: '1000+ Orders', description: 'Reached our first major milestone' },
-    { year: '2022', event: 'Multi-City Expansion', description: 'Expanded to 5 major cities' },
-    { year: '2023', event: '50K+ Customers', description: 'Built a loyal customer base' },
-    { year: '2024', event: 'Innovation Focus', description: 'Launched AI-powered recommendations' }
+    { year: '2020', event: 'FoodHub Founded', description: 'Started as a small local delivery service with a big vision' },
+    { year: '2021', event: '10K+ Orders', description: 'Reached our first major milestone with growing customer base' },
+    { year: '2022', event: 'Multi-City Expansion', description: 'Expanded to 25+ major cities across the country' },
+    { year: '2023', event: '100K+ Customers', description: 'Built a loyal community of food enthusiasts' },
+    { year: '2024', event: 'Innovation Focus', description: 'Launched AI-powered recommendations and smart delivery' }
   ];
 
   const values = [
     {
       icon: <Target size={48} color="#ff6b35" />,
       title: 'Customer First',
-      description: 'Everything we do is centered around delivering exceptional customer experiences.'
+      description: 'Everything we do is centered around delivering exceptional customer experiences and satisfaction.'
     },
     {
       icon: <Users size={48} color="#ff6b35" />,
       title: 'Community',
-      description: 'We build strong relationships with restaurants, delivery partners, and customers.'
+      description: 'We build strong relationships with restaurants, delivery partners, and customers in every city we serve.'
     },
     {
       icon: <Award size={48} color="#ff6b35" />,
       title: 'Quality',
-      description: 'We maintain the highest standards in food quality, service, and technology.'
+      description: 'We maintain the highest standards in food quality, service delivery, and technology innovation.'
+    },
+    {
+      icon: <Heart size={48} color="#ff6b35" />,
+      title: 'Passion',
+      description: 'We are passionate about food, technology, and creating memorable experiences for everyone.'
+    },
+    {
+      icon: <Zap size={48} color="#ff6b35" />,
+      title: 'Speed',
+      description: 'Fast, reliable delivery is at the core of what we do, ensuring your food arrives hot and fresh.'
     },
     {
       icon: <Globe size={48} color="#ff6b35" />,
-      title: 'Sustainability',
-      description: 'Committed to environmentally responsible practices and local sourcing.'
+      title: 'Growth',
+      description: 'We continuously expand our reach while maintaining our commitment to local communities.'
     }
   ];
 
   const stats = [
-    { number: '50,000+', label: 'Happy Customers', icon: <Users size={24} /> },
-    { number: '500+', label: 'Restaurant Partners', icon: <Building2 size={24} /> },
-    { number: '25+', label: 'Cities Served', icon: <Globe size={24} /> },
-    { number: '4.8/5', label: 'Customer Rating', icon: <Award size={24} /> }
+    { number: '500K+', label: 'Happy Customers', icon: <Users size={24} /> },
+    { number: '10K+', label: 'Restaurant Partners', icon: <Building2 size={24} /> },
+    { number: '50+', label: 'Cities Served', icon: <Globe size={24} /> },
+    { number: '99%', label: 'Satisfaction Rate', icon: <Award size={24} /> }
   ];
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      <SimpleNavbar />
+    <div style={{ minHeight: '100vh', background: '#f8f9fc', paddingTop: '100px' }}>
 
-      <div style={{ paddingTop: '80px', paddingBottom: '50px' }}>
-        {/* Hero Section */}
-        <section style={{ background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)', color: 'white', padding: '80px 0' }}>
-          <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 20px' }}>
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+          color: 'white',
+          padding: '80px 20px',
+          textAlign: 'center',
+          borderRadius: '0 0 20px 20px'
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Building2 size={80} style={{ marginBottom: '30px' }} />
+          <h1 style={{
+            fontSize: '56px',
+            fontWeight: 'bold',
+            marginBottom: '20px',
+            background: 'linear-gradient(45deg, white, rgba(255,255,255,0.8))',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
+            About FoodHub
+          </h1>
+          <p style={{
+            fontSize: '22px',
+            maxWidth: '700px',
+            margin: '0 auto',
+            opacity: 0.95,
+            lineHeight: '1.6'
+          }}>
+            Revolutionizing food delivery through innovation, quality, and exceptional customer service since 2020
+          </p>
+        </motion.div>
+      </motion.section>
+
+      {/* Stats Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        style={{ padding: '80px 20px', maxWidth: '1200px', margin: '0 auto' }}
+      >
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '30px',
+          marginBottom: '80px'
+        }}>
+          {stats.map((stat, index) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              style={{ textAlign: 'center' }}
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              style={{
+                background: 'white',
+                padding: '40px 20px',
+                borderRadius: '20px',
+                textAlign: 'center',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                border: '1px solid #e0e0e0'
+              }}
             >
-              <Building2 size={80} style={{ marginBottom: '24px' }} />
-              <h1 style={{ fontSize: '3rem', marginBottom: '24px', fontWeight: 'bold' }}>About FoodieHub</h1>
-              <p style={{ fontSize: '1.3rem', lineHeight: '1.6', maxWidth: '700px', margin: '0 auto' }}>
-                Revolutionizing food delivery through technology, quality, and exceptional service.
-                Connecting communities one meal at a time since 2020.
+              <div style={{
+                color: '#ff6b35',
+                marginBottom: '15px',
+                display: 'flex',
+                justifyContent: 'center'
+              }}>
+                {stat.icon}
+              </div>
+              <h3 style={{
+                fontSize: '36px',
+                fontWeight: 'bold',
+                color: '#333',
+                marginBottom: '8px'
+              }}>
+                {stat.number}
+              </h3>
+              <p style={{
+                color: '#666',
+                fontSize: '16px',
+                margin: 0
+              }}>
+                {stat.label}
               </p>
             </motion.div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </motion.section>
 
-        <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 20px' }}>
-          {/* Mission Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '80px 0', textAlign: 'center' }}
-          >
-            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '30px' }}>Our Mission</h2>
-            <div style={{ background: 'white', borderRadius: '20px', padding: '50px', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}>
-              <p style={{ fontSize: '1.3rem', lineHeight: '1.8', color: '#333', marginBottom: '30px' }}>
-                "To make delicious, quality food accessible to everyone, everywhere, while supporting local restaurants and creating meaningful employment opportunities in our communities."
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '30px' }}>
-                <TrendingUp size={32} color="#ff6b35" />
-                <Target size={32} color="#ff6b35" />
-                <Users size={32} color="#ff6b35" />
-              </div>
-            </div>
-          </motion.section>
+      {/* Our Story */}
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        style={{ padding: '0 20px 80px', maxWidth: '1200px', margin: '0 auto' }}
+      >
+        <div style={{
+          background: 'white',
+          borderRadius: '20px',
+          padding: '60px 40px',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+          textAlign: 'center'
+        }}>
+          <h2 style={{
+            fontSize: '42px',
+            fontWeight: 'bold',
+            marginBottom: '30px',
+            color: '#333'
+          }}>
+            Our Story
+          </h2>
+          <p style={{
+            fontSize: '18px',
+            color: '#666',
+            lineHeight: '1.8',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            Founded in 2020 with a simple mission: to connect people with delicious food from their favorite restaurants.
+            What started as a local delivery service has grown into a nationwide platform serving hundreds of thousands
+            of customers. We believe that good food brings people together, and we're proud to be part of that connection.
+            <br /><br />
+            Our journey has been driven by innovation, customer feedback, and a relentless pursuit of excellence.
+            From our humble beginnings to becoming a trusted name in food delivery, we've never lost sight of what
+            matters most: delivering not just food, but happiness to your doorstep.
+          </p>
+        </div>
+      </motion.section>
 
-          {/* Values Section */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '50px', textAlign: 'center' }}>Our Values</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  style={{
-                    background: 'white',
-                    padding: '40px',
-                    borderRadius: '16px',
-                    textAlign: 'center',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                    border: '1px solid #f0f0f0'
-                  }}
-                >
-                  <div style={{ marginBottom: '20px' }}>{value.icon}</div>
-                  <h3 style={{ fontSize: '1.5rem', color: '#333', marginBottom: '16px' }}>{value.title}</h3>
-                  <p style={{ color: '#666', lineHeight: '1.6' }}>{value.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
+      {/* Timeline */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        style={{ padding: '0 20px 80px', maxWidth: '1200px', margin: '0 auto' }}
+      >
+        <h2 style={{
+          textAlign: 'center',
+          fontSize: '42px',
+          fontWeight: 'bold',
+          marginBottom: '60px',
+          color: '#333'
+        }}>
+          Our Journey
+        </h2>
 
-          {/* Stats Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{ background: '#f8f9fa', borderRadius: '20px', padding: '50px' }}>
-              <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '40px', textAlign: 'center' }}>Our Impact</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px' }}>
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    style={{ textAlign: 'center' }}
-                  >
-                    <div style={{ color: '#ff6b35', marginBottom: '16px' }}>{stat.icon}</div>
-                    <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#ff6b35', marginBottom: '8px' }}>
-                      {stat.number}
-                    </div>
-                    <div style={{ color: '#666', fontSize: '1.1rem' }}>{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
+        <div style={{ position: 'relative' }}>
+          {/* Timeline line */}
+          <div style={{
+            position: 'absolute',
+            left: '50%',
+            top: 0,
+            bottom: 0,
+            width: '4px',
+            background: 'linear-gradient(to bottom, #ff6b35, #f7931e)',
+            transform: 'translateX(-50%)',
+            borderRadius: '2px'
+          }} />
 
-          {/* Timeline Section */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <h2 style={{ fontSize: '2.5rem', color: '#333', marginBottom: '50px', textAlign: 'center' }}>Our Journey</h2>
-            <div style={{ position: 'relative' }}>
-              {/* Timeline line */}
+          {milestones.map((milestone, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 + index * 0.2 }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '60px',
+                position: 'relative'
+              }}
+            >
+              {/* Timeline dot */}
               <div style={{
                 position: 'absolute',
                 left: '50%',
-                transform: 'translateX(-50%)',
-                width: '2px',
-                height: '100%',
+                width: '20px',
+                height: '20px',
                 background: '#ff6b35',
-                opacity: 0.3
+                borderRadius: '50%',
+                transform: 'translateX(-50%)',
+                border: '4px solid white',
+                boxShadow: '0 0 0 4px #ff6b35',
+                zIndex: 2
               }} />
 
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  style={{
-                    display: 'flex',
-                    justifyContent: index % 2 === 0 ? 'flex-start' : 'flex-end',
-                    marginBottom: '40px',
-                    position: 'relative'
-                  }}
-                >
-                  <div style={{
-                    background: 'white',
-                    padding: '30px',
-                    borderRadius: '16px',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                    width: '45%',
-                    position: 'relative'
-                  }}>
-                    {/* Timeline dot */}
-                    <div style={{
-                      position: 'absolute',
-                      top: '50%',
-                      [index % 2 === 0 ? 'right' : 'left']: '-25px',
-                      transform: 'translateY(-50%)',
-                      width: '20px',
-                      height: '20px',
-                      background: '#ff6b35',
-                      borderRadius: '50%',
-                      border: '3px solid white',
-                      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-                    }} />
-
-                    <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff6b35', marginBottom: '8px' }}>
-                      {milestone.year}
-                    </div>
-                    <h3 style={{ fontSize: '1.3rem', color: '#333', marginBottom: '12px' }}>
-                      {milestone.event}
-                    </h3>
-                    <p style={{ color: '#666', lineHeight: '1.6' }}>
-                      {milestone.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Contact Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ padding: '60px 0' }}
-          >
-            <div style={{ background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)', color: 'white', borderRadius: '20px', padding: '50px', textAlign: 'center' }}>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '24px' }}>Get In Touch</h2>
-              <p style={{ fontSize: '1.2rem', marginBottom: '30px', opacity: 0.9 }}>
-                Have questions about our company or interested in partnerships?
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginTop: '40px' }}>
-                <div>
-                  <Building2 size={32} style={{ marginBottom: '16px' }} />
-                  <h3 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>Headquarters</h3>
-                  <p style={{ opacity: 0.9 }}>123 Food Street<br />Culinary City, FC 12345</p>
+              {/* Content */}
+              <div style={{
+                width: '45%',
+                marginLeft: index % 2 === 0 ? '0' : '55%',
+                background: 'white',
+                padding: '30px',
+                borderRadius: '15px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                border: '1px solid #e0e0e0'
+              }}>
+                <div style={{
+                  background: '#ff6b35',
+                  color: 'white',
+                  display: 'inline-block',
+                  padding: '8px 16px',
+                  borderRadius: '20px',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginBottom: '15px'
+                }}>
+                  {milestone.year}
                 </div>
-                <div>
-                  <Users size={32} style={{ marginBottom: '16px' }} />
-                  <h3 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>General Inquiries</h3>
-                  <p style={{ opacity: 0.9 }}>info@foodiehub.com<br />+1 (555) 123-4567</p>
-                </div>
-                <div>
-                  <Globe size={32} style={{ marginBottom: '16px' }} />
-                  <h3 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>Business Hours</h3>
-                  <p style={{ opacity: 0.9 }}>Mon - Fri: 9AM - 6PM<br />Weekend: 10AM - 4PM</p>
-                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  marginBottom: '10px',
+                  color: '#333'
+                }}>
+                  {milestone.event}
+                </h3>
+                <p style={{
+                  color: '#666',
+                  lineHeight: '1.6',
+                  margin: 0
+                }}>
+                  {milestone.description}
+                </p>
               </div>
-            </div>
-          </motion.section>
+            </motion.div>
+          ))}
         </div>
-      </div>
+      </motion.section>
 
-      <SimpleFooter />
+      {/* Values Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        style={{ padding: '0 20px 80px', maxWidth: '1200px', margin: '0 auto' }}
+      >
+        <h2 style={{
+          textAlign: 'center',
+          fontSize: '42px',
+          fontWeight: 'bold',
+          marginBottom: '60px',
+          color: '#333'
+        }}>
+          Our Values
+        </h2>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          gap: '30px'
+        }}>
+          {values.map((value, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+              whileHover={{ scale: 1.02, y: -5 }}
+              style={{
+                background: 'white',
+                padding: '40px 30px',
+                borderRadius: '20px',
+                textAlign: 'center',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                border: '1px solid #e0e0e0'
+              }}
+            >
+              <div style={{ marginBottom: '25px' }}>
+                {value.icon}
+              </div>
+              <h3 style={{
+                fontSize: '24px',
+                fontWeight: 'bold',
+                marginBottom: '15px',
+                color: '#333'
+              }}>
+                {value.title}
+              </h3>
+              <p style={{
+                color: '#666',
+                lineHeight: '1.6',
+                margin: 0
+              }}>
+                {value.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* CTA Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.0 }}
+        style={{ padding: '0 20px 60px', maxWidth: '800px', margin: '0 auto' }}
+      >
+        <div style={{
+          background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+          color: 'white',
+          padding: '60px 40px',
+          borderRadius: '20px',
+          textAlign: 'center'
+        }}>
+          <TrendingUp size={60} style={{ marginBottom: '25px' }} />
+          <h2 style={{
+            fontSize: '36px',
+            fontWeight: 'bold',
+            marginBottom: '20px'
+          }}>
+            Join Our Journey
+          </h2>
+          <p style={{
+            fontSize: '18px',
+            marginBottom: '35px',
+            opacity: 0.95
+          }}>
+            Be part of the food delivery revolution. Whether you're a customer,
+            restaurant partner, or potential team member, we'd love to have you aboard!
+          </p>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button style={{
+              background: 'white',
+              color: '#ff6b35',
+              border: 'none',
+              padding: '15px 30px',
+              borderRadius: '10px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
+            onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+            >
+              Start Ordering
+            </button>
+            <button style={{
+              background: 'transparent',
+              color: 'white',
+              border: '2px solid white',
+              padding: '15px 30px',
+              borderRadius: '10px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseOver={(e) => {
+              e.target.style.background = 'white';
+              e.target.style.color = '#ff6b35';
+            }}
+            onMouseOut={(e) => {
+              e.target.style.background = 'transparent';
+              e.target.style.color = 'white';
+            }}
+            >
+              Partner With Us
+            </button>
+          </div>
+        </div>
+      </motion.section>
     </div>
   );
 };

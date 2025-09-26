@@ -145,7 +145,7 @@ export const UserProvider = ({ children }) => {
       // Demo users for testing
       const demoUsers = [
         { id: 1, email: 'user@example.com', name: 'John Doe', password: 'password123' },
-        { id: 2, email: 'admin@example.com', name: 'Admin User', password: 'admin123', isAdmin: true }
+        { id: 2, email: 'admin@example.com', name: 'Admin User', password: 'admin123', role: 'admin' }
       ];
 
       const foundUser = demoUsers.find(u => u.email === email && u.password === password);

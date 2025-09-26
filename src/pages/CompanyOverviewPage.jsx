@@ -1,13 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Users, Target, Award, MapPin, Calendar } from 'lucide-react';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
-import SimpleFooter from '../components/ui/SimpleFooter';
-import { useTheme } from '../context/ThemeContext';
 
 const CompanyOverviewPage = () => {
-  const { theme } = useTheme();
-
   const stats = [
     { icon: <Users size={32} />, number: '10M+', label: 'Happy Customers' },
     { icon: <Building2 size={32} />, number: '500+', label: 'Restaurant Partners' },
@@ -19,7 +14,7 @@ const CompanyOverviewPage = () => {
     {
       title: "Customer First",
       icon: <Users size={24} />,
-      description: "We prioritize customer satisfaction in everything we do. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      description: "We prioritize customer satisfaction in everything we do. Our customer-centric approach drives every decision we make."
     },
     {
       title: "Quality Assured",
@@ -34,10 +29,8 @@ const CompanyOverviewPage = () => {
   ];
 
   return (
-    <div style={{ minHeight: '100vh', background: theme.colors.background }}>
-      <SimpleNavbar />
-
-      <div style={{ paddingTop: '80px', paddingBottom: '60px' }}>
+    <div style={{ minHeight: '100vh', background: '#f8f9fc', paddingTop: '100px' }}>
+      <div style={{ paddingTop: '20px', paddingBottom: '60px' }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -46,243 +39,268 @@ const CompanyOverviewPage = () => {
           style={{
             textAlign: 'center',
             marginBottom: '60px',
-            background: theme.colors.surface,
+            background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+            color: 'white',
             padding: '60px 20px',
-            borderBottom: `1px solid ${theme.colors.border}`
+            borderRadius: '0 0 20px 20px'
           }}
         >
-          <Building2 size={64} color={theme.colors.primary} style={{ marginBottom: '24px' }} />
+          <Building2 size={64} color="white" style={{ marginBottom: '24px' }} />
           <h1 style={{
-            fontSize: '3.5rem',
-            color: theme.colors.text,
-            marginBottom: '20px',
-            fontWeight: 'bold'
+            fontSize: '48px',
+            fontWeight: 'bold',
+            marginBottom: '16px',
+            color: 'white'
           }}>
-            About FoodieHub
+            Company Overview
           </h1>
           <p style={{
-            color: theme.colors.textSecondary,
-            fontSize: '1.3rem',
-            lineHeight: '1.6',
+            fontSize: '20px',
+            color: 'rgba(255,255,255,0.9)',
             maxWidth: '600px',
             margin: '0 auto'
           }}>
-            Connecting food lovers with their favorite restaurants through innovative technology and exceptional service.
+            Building the future of food delivery, one meal at a time
           </p>
         </motion.div>
 
-        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px' }}>
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '30px',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 20px',
+            marginBottom: '80px'
+          }}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              style={{
+                textAlign: 'center',
+                background: 'white',
+                padding: '40px 30px',
+                borderRadius: '20px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                border: '1px solid #e0e0e0'
+              }}
+            >
+              <div style={{
+                background: '#ff6b35',
+                borderRadius: '50%',
+                width: '80px',
+                height: '80px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 20px',
+                color: 'white'
+              }}>
+                {stat.icon}
+              </div>
+              <h3 style={{
+                fontSize: '36px',
+                fontWeight: 'bold',
+                marginBottom: '8px',
+                color: '#333'
+              }}>
+                {stat.number}
+              </h3>
+              <p style={{
+                fontSize: '16px',
+                color: '#666',
+                margin: 0
+              }}>
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ marginBottom: '80px' }}
-          >
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '32px'
-            }}>
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  style={{
-                    background: theme.colors.surfaceAlt,
-                    padding: '32px',
-                    borderRadius: '16px',
-                    textAlign: 'center',
-                    boxShadow: `0 4px 20px ${theme.colors.shadow}`,
-                    border: `1px solid ${theme.colors.border}`
-                  }}
-                >
-                  <div style={{
-                    background: theme.colors.primary,
-                    color: 'white',
-                    padding: '16px',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    marginBottom: '16px'
-                  }}>
-                    {stat.icon}
-                  </div>
-                  <h3 style={{
-                    fontSize: '2.5rem',
-                    color: theme.colors.text,
-                    marginBottom: '8px',
-                    fontWeight: 'bold'
-                  }}>
-                    {stat.number}
-                  </h3>
-                  <p style={{
-                    color: theme.colors.textSecondary,
-                    fontSize: '1.1rem'
-                  }}>
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Mission Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{
-              background: theme.colors.surfaceAlt,
-              padding: '50px',
-              borderRadius: '20px',
-              marginBottom: '60px',
-              boxShadow: `0 4px 20px ${theme.colors.shadow}`,
-              border: `1px solid ${theme.colors.border}`
-            }}
-          >
+        {/* Mission Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto 80px',
+            padding: '0 20px'
+          }}
+        >
+          <div style={{
+            textAlign: 'center',
+            background: 'white',
+            padding: '60px 40px',
+            borderRadius: '20px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+            border: '1px solid #e0e0e0'
+          }}>
             <h2 style={{
-              fontSize: '2.5rem',
-              color: theme.colors.text,
-              marginBottom: '24px',
+              fontSize: '36px',
               fontWeight: 'bold',
-              textAlign: 'center'
+              marginBottom: '24px',
+              color: '#333'
             }}>
               Our Mission
             </h2>
             <p style={{
-              color: theme.colors.textSecondary,
-              fontSize: '1.2rem',
+              fontSize: '18px',
+              color: '#666',
               lineHeight: '1.8',
-              textAlign: 'center',
-              maxWidth: '700px',
+              maxWidth: '800px',
               margin: '0 auto'
             }}>
-              To revolutionize the food delivery industry by connecting people with great food experiences.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+              To revolutionize the food delivery industry by connecting people with their favorite meals through
+              innovative technology, exceptional service, and a commitment to quality. We strive to create
+              meaningful experiences that bring communities together, one delivery at a time.
             </p>
-          </motion.div>
+          </div>
+        </motion.div>
 
-          {/* Values Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            style={{ marginBottom: '60px' }}
-          >
-            <h2 style={{
-              fontSize: '2.5rem',
-              color: theme.colors.text,
-              marginBottom: '40px',
-              fontWeight: 'bold',
-              textAlign: 'center'
-            }}>
-              Our Values
-            </h2>
+        {/* Values Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 20px'
+          }}
+        >
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: '36px',
+            fontWeight: 'bold',
+            marginBottom: '50px',
+            color: '#333'
+          }}>
+            Our Values
+          </h2>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '32px'
-            }}>
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  style={{
-                    background: theme.colors.surfaceAlt,
-                    padding: '32px',
-                    borderRadius: '16px',
-                    boxShadow: `0 4px 20px ${theme.colors.shadow}`,
-                    border: `1px solid ${theme.colors.border}`,
-                    textAlign: 'center'
-                  }}
-                >
-                  <div style={{
-                    background: theme.colors.primary,
-                    color: 'white',
-                    padding: '16px',
-                    borderRadius: '50%',
-                    display: 'inline-flex',
-                    marginBottom: '20px'
-                  }}>
-                    {value.icon}
-                  </div>
-                  <h3 style={{
-                    fontSize: '1.5rem',
-                    color: theme.colors.text,
-                    marginBottom: '16px',
-                    fontWeight: 'bold'
-                  }}>
-                    {value.title}
-                  </h3>
-                  <p style={{
-                    color: theme.colors.textSecondary,
-                    fontSize: '1rem',
-                    lineHeight: '1.6'
-                  }}>
-                    {value.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            style={{
-              background: theme.colors.primary,
-              color: 'white',
-              padding: '50px',
-              borderRadius: '20px',
-              textAlign: 'center'
-            }}
-          >
-            <h3 style={{ fontSize: '2rem', marginBottom: '16px' }}>Join Our Journey</h3>
-            <p style={{ fontSize: '1.1rem', marginBottom: '32px', opacity: 0.9 }}>
-              Be part of the food delivery revolution. Explore opportunities to grow with us.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
-              <a
-                href="/careers"
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '30px'
+          }}>
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                whileHover={{ scale: 1.03, y: -5 }}
                 style={{
                   background: 'white',
-                  color: theme.colors.primary,
-                  padding: '16px 32px',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
-                  fontWeight: 'bold',
-                  display: 'inline-block'
+                  padding: '40px 30px',
+                  borderRadius: '20px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                  border: '1px solid #e0e0e0',
+                  textAlign: 'center'
                 }}
               >
-                View Careers
-              </a>
-              <a
-                href="/partner"
-                style={{
-                  background: 'rgba(255,255,255,0.2)',
-                  color: 'white',
-                  border: '2px solid white',
-                  padding: '16px 32px',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
+                <div style={{
+                  background: '#ff6b35',
+                  borderRadius: '50%',
+                  width: '60px',
+                  height: '60px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 20px',
+                  color: 'white'
+                }}>
+                  {value.icon}
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
                   fontWeight: 'bold',
-                  display: 'inline-block'
-                }}
-              >
-                Partner With Us
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+                  marginBottom: '16px',
+                  color: '#333'
+                }}>
+                  {value.title}
+                </h3>
+                <p style={{
+                  fontSize: '16px',
+                  color: '#666',
+                  lineHeight: '1.6',
+                  margin: 0
+                }}>
+                  {value.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-      <SimpleFooter />
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          style={{
+            textAlign: 'center',
+            marginTop: '80px',
+            padding: '0 20px'
+          }}
+        >
+          <div style={{
+            background: '#ff6b35',
+            color: 'white',
+            padding: '50px 40px',
+            borderRadius: '20px',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            <h2 style={{
+              fontSize: '32px',
+              fontWeight: 'bold',
+              marginBottom: '20px'
+            }}>
+              Join Our Journey
+            </h2>
+            <p style={{
+              fontSize: '18px',
+              marginBottom: '30px',
+              opacity: 0.9
+            }}>
+              Ready to be part of the future of food delivery?
+            </p>
+            <button style={{
+              background: 'white',
+              color: '#ff6b35',
+              border: 'none',
+              padding: '15px 30px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseOver={(e) => {
+              e.target.style.transform = 'scale(1.05)';
+              e.target.style.boxShadow = '0 8px 25px rgba(0,0,0,0.2)';
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = 'scale(1)';
+              e.target.style.boxShadow = 'none';
+            }}>
+              Explore Opportunities
+            </button>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };
