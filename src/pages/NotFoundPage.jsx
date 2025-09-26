@@ -1,236 +1,140 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Home, ArrowLeft, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import SimpleNavbar from '../components/ui/SimpleNavbar';
-import SimpleFooter from '../components/ui/SimpleFooter';
-import { useTheme } from '../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
+import { Container, Button } from 'react-bootstrap';
 
 const NotFoundPage = () => {
-  const { theme } = useTheme();
+  const navigate = useNavigate();
 
   return (
-    <div style={{ minHeight: '100vh', background: theme.colors.background }}>
-      <SimpleNavbar />
-
-      <div style={{
-        paddingTop: '80px',
-        paddingBottom: '60px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: 'calc(100vh - 140px)'
-      }}>
-        <div className="container" style={{
-          maxWidth: '600px',
-          margin: '0 auto',
-          padding: '0 20px',
-          textAlign: 'center'
+    <div style={{
+      backgroundColor: '#f8f9fc',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <Container>
+        <div style={{
+          textAlign: 'center',
+          padding: '60px 20px'
         }}>
+          {/* 404 Number */}
+          <div style={{
+            fontSize: '8rem',
+            fontWeight: 'bold',
+            background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginBottom: '20px',
+            lineHeight: '1'
+          }}>
+            404
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* 404 Number */}
-            <motion.h1
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+          {/* Food Icon */}
+          <div style={{
+            fontSize: '4rem',
+            marginBottom: '30px'
+          }}>
+            🍽️
+          </div>
+
+          {/* Error Message */}
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            color: '#2d3436',
+            marginBottom: '20px'
+          }}>
+            Oops! Page Not Found
+          </h1>
+
+          <p style={{
+            fontSize: '1.2rem',
+            color: '#636e72',
+            marginBottom: '40px',
+            maxWidth: '500px',
+            margin: '0 auto 40px'
+          }}>
+            The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="d-flex gap-3 justify-content-center flex-wrap">
+            <Button
+              onClick={() => navigate('/')}
               style={{
-                fontSize: '8rem',
-                fontWeight: 'bold',
-                color: theme.colors.primary,
-                marginBottom: '0',
-                lineHeight: '1',
-                textShadow: `0 4px 20px ${theme.colors.shadow}`
+                background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+                border: 'none',
+                color: 'white',
+                borderRadius: '12px',
+                padding: '12px 24px',
+                fontSize: '1.1rem',
+                fontWeight: '600'
               }}
             >
-              404
-            </motion.h1>
+              🏠 Go Home
+            </Button>
 
-            {/* Error Message */}
-            <motion.h2
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
+            <Button
+              onClick={() => navigate('/menu')}
               style={{
-                fontSize: '2rem',
-                color: theme.colors.text,
-                marginBottom: '16px',
-                fontWeight: 'bold'
+                background: 'transparent',
+                border: '2px solid #0984e3',
+                color: '#0984e3',
+                borderRadius: '12px',
+                padding: '12px 24px',
+                fontSize: '1.1rem',
+                fontWeight: '600'
               }}
             >
-              Page Not Found
-            </motion.h2>
+              🍽️ View Menu
+            </Button>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
+            <Button
+              onClick={() => navigate(-1)}
               style={{
-                color: theme.colors.textSecondary,
-                fontSize: '1.2rem',
-                lineHeight: '1.6',
-                marginBottom: '40px'
+                background: 'transparent',
+                border: '2px solid #636e72',
+                color: '#636e72',
+                borderRadius: '12px',
+                padding: '12px 24px',
+                fontSize: '1.1rem',
+                fontWeight: '600'
               }}
             >
-              Sorry, the page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
-            </motion.p>
+              ← Go Back
+            </Button>
+          </div>
 
-            {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              style={{
-                display: 'flex',
-                gap: '16px',
-                justifyContent: 'center',
-                flexWrap: 'wrap'
-              }}
-            >
-              <Link
-                to="/"
-                style={{
-                  background: theme.colors.primary,
-                  color: 'white',
-                  padding: '16px 32px',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
-                  fontWeight: 'bold',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = `0 8px 25px ${theme.colors.shadowHover}`;
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = 'none';
-                }}
-              >
-                <Home size={20} />
-                Go to Homepage
-              </Link>
-
-              <button
-                onClick={() => window.history.back()}
-                style={{
-                  background: 'transparent',
-                  color: theme.colors.text,
-                  border: `2px solid ${theme.colors.border}`,
-                  padding: '16px 32px',
-                  borderRadius: '12px',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.borderColor = theme.colors.primary;
-                  e.target.style.color = theme.colors.primary;
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.borderColor = theme.colors.border;
-                  e.target.style.color = theme.colors.text;
-                }}
-              >
-                <ArrowLeft size={20} />
-                Go Back
-              </button>
-            </motion.div>
-
-            {/* Search Suggestion */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              style={{
-                background: theme.colors.surface,
-                padding: '24px',
-                borderRadius: '16px',
-                marginTop: '40px',
-                border: `1px solid ${theme.colors.border}`
-              }}
-            >
-              <Search size={24} color={theme.colors.primary} style={{ marginBottom: '12px' }} />
-              <h3 style={{
-                fontSize: '1.2rem',
-                color: theme.colors.text,
-                marginBottom: '8px',
-                fontWeight: 'bold'
-              }}>
-                Looking for something specific?
-              </h3>
-              <p style={{
-                color: theme.colors.textSecondary,
-                fontSize: '1rem',
-                marginBottom: '16px'
-              }}>
-                Try searching our menu or browse our popular categories.
-              </p>
-              <div style={{
-                display: 'flex',
-                gap: '12px',
-                justifyContent: 'center',
-                flexWrap: 'wrap'
-              }}>
-                <Link
-                  to="/menu"
-                  style={{
-                    background: theme.colors.surfaceAlt,
-                    color: theme.colors.text,
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    textDecoration: 'none',
-                    fontSize: '0.9rem',
-                    border: `1px solid ${theme.colors.border}`
-                  }}
-                >
-                  Browse Menu
-                </Link>
-                <Link
-                  to="/about"
-                  style={{
-                    background: theme.colors.surfaceAlt,
-                    color: theme.colors.text,
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    textDecoration: 'none',
-                    fontSize: '0.9rem',
-                    border: `1px solid ${theme.colors.border}`
-                  }}
-                >
-                  About Us
-                </Link>
-                <Link
-                  to="/contact"
-                  style={{
-                    background: theme.colors.surfaceAlt,
-                    color: theme.colors.text,
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    textDecoration: 'none',
-                    fontSize: '0.9rem',
-                    border: `1px solid ${theme.colors.border}`
-                  }}
-                >
-                  Contact
-                </Link>
-              </div>
-            </motion.div>
-          </motion.div>
+          {/* Additional Info */}
+          <div style={{
+            marginTop: '50px',
+            padding: '20px',
+            backgroundColor: 'white',
+            borderRadius: '15px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+            maxWidth: '400px',
+            margin: '50px auto 0'
+          }}>
+            <h5 style={{
+              color: '#2d3436',
+              marginBottom: '15px',
+              fontWeight: 'bold'
+            }}>
+              🍕 Looking for something tasty?
+            </h5>
+            <p style={{
+              color: '#636e72',
+              fontSize: '14px',
+              marginBottom: '0'
+            }}>
+              Check out our delicious menu with fresh ingredients and amazing flavors!
+            </p>
+          </div>
         </div>
-      </div>
-
-      <SimpleFooter />
+      </Container>
     </div>
   );
 };

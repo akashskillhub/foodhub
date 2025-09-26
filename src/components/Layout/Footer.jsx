@@ -53,15 +53,15 @@ const Footer = () => {
             </p>
             <div className="d-flex gap-3 mb-3">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                 className="text-secondary hover-orange">
+                className="text-secondary hover-orange">
                 <Facebook size={20} />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                 className="text-secondary hover-orange">
+                className="text-secondary hover-orange">
                 <Instagram size={20} />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                 className="text-secondary hover-orange">
+                className="text-secondary hover-orange">
                 <Twitter size={20} />
               </a>
               <Button variant="link" onClick={handleWhatsAppClick} className="p-0 text-secondary hover-orange">
@@ -88,6 +88,9 @@ const Footer = () => {
               <LinkContainer to="/about">
                 <Nav.Link className="text-secondary p-0 mb-2 hover-orange">About Us</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/dashboard">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">📊 Dashboard</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/careers">
                 <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Careers</Nav.Link>
               </LinkContainer>
@@ -99,6 +102,9 @@ const Footer = () => {
               </LinkContainer>
               <LinkContainer to="/corporate">
                 <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Corporate</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/menu">
+                <Nav.Link className="text-secondary p-0 mb-2 hover-orange">Menu</Nav.Link>
               </LinkContainer>
             </Nav>
           </Col>

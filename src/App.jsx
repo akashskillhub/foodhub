@@ -7,7 +7,8 @@ import NavigationBar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import FoodWebsiteHome from './pages/FoodWebsiteHome';
 import MenuPage from './pages/MenuPage';
-import DishDetailsPage from './pages/DishDetailsPage';
+import DishDetailPage from './pages/DishDetailPage';
+import NotFoundPage from './pages/NotFoundPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import AboutPage from './pages/AboutPage';
@@ -26,6 +27,7 @@ import PartnerPage from './pages/PartnerPage';
 import PrivacyPage from './pages/PrivacyPage';
 import CookiePage from './pages/CookiePage';
 import TermsPage from './pages/TermsPage';
+import DashboardPage from './pages/DashboardPage';
 import './App.css';
 
 /**
@@ -46,7 +48,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<FoodWebsiteHome />} />
                   <Route path="/menu" element={<MenuPage />} />
-                  <Route path="/dish/:id" element={<DishDetailsPage />} />
+                  <Route path="/dish/:id" element={<DishDetailPage />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/checkout" element={<CheckoutPage />} />
                   <Route path="/about" element={<AboutPage />} />
@@ -58,6 +60,7 @@ function App() {
                   <Route path="/account" element={<OrderHistoryPage />} />
                   <Route path="/orders" element={<OrderHistoryPage />} />
                   <Route path="/admin" element={<AdminPage />} />
+                  <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/careers" element={<CareersPage />} />
                   <Route path="/team" element={<TeamPage />} />
                   <Route path="/blog" element={<div className="container py-5"><h1>Blog Coming Soon!</h1></div>} />
@@ -68,6 +71,8 @@ function App() {
                   <Route path="/legal" element={<div className="container py-5"><h1>Legal Information</h1></div>} />
                   <Route path="/support" element={<SupportPage />} />
                   <Route path="/partner" element={<PartnerPage />} />
+                  {/* 404 - Catch all unmatched routes */}
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </main>
               <Footer />

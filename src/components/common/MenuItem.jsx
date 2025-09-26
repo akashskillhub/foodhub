@@ -20,7 +20,7 @@ function MenuItem({ item }) {
   };
 
   return (
-    <Card className="h-100 shadow-sm">
+    <Card className="h-100 shadow-sm" style={{ borderRadius: '25px', overflow: 'hidden' }}>
       <Card.Img
         variant="top"
         src={item.image || 'https://via.placeholder.com/300x200?text=Food+Item'}
@@ -63,15 +63,58 @@ function MenuItem({ item }) {
 
         <div className="d-flex gap-2 mt-auto">
           <LinkContainer to={`/dish/${item.id}`}>
-            <Button variant="outline-primary" size="sm" className="flex-grow-1">
+            <Button
+              size="sm"
+              className="flex-grow-1"
+              onClick={handleAddToCart}
+              style={{
+                backgroundColor: '#007bff', // solid blue
+                border: '2px solid #ff6b35', // orange border
+                color: '#ff6b35', // orange text
+                fontWeight: '600',
+                borderRadius: '14px',
+                boxShadow: 'none', // remove Bootstrap's glow
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#ff6b35'; // orange bg
+                e.target.style.color = '#ffffff'; // white text
+                e.target.style.border = '2px solid #ff6b35'; // keep orange border
+                e.target.style.boxShadow = '0 6px 20px rgba(255, 107, 53, 0.4)'; // orange glow
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '#007bff'; // back to blue
+                e.target.style.color = '#ff6b35'; // back to orange text
+                e.target.style.border = '2px solid #ff6b35';
+                e.target.style.boxShadow = 'none'; // reset shadow
+              }}
+            >
               View Details
             </Button>
           </LinkContainer>
+
+
           <Button
-            variant="primary"
             size="sm"
             className="flex-grow-1"
             onClick={handleAddToCart}
+            style={{
+              background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+              border: 'none',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '12px',
+              boxShadow: '0 4px 15px rgba(255, 107, 53, 0.3)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 20px rgba(255, 107, 53, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 15px rgba(255, 107, 53, 0.3)';
+            }}
           >
             Add to Cart
           </Button>

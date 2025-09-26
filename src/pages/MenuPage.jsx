@@ -1,40 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Nav, Card, Button, Form, InputGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useSearchParams } from 'react-router-dom';
-import MenuItem from '../components/common/MenuItem';
 import { useCart } from '../context/CartContext';
-import { useAdmin } from '../context/AdminContext';
 
-// Default menu data when admin items are not available
-const defaultMenuData = {
-  starters: [
+const MenuPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const { addItem } = useCart();
+
+  const menuItems = [
     {
-      id: 101,
-      name: "Chicken Wings",
-      price: 280,
-      type: "nonveg",
-      rating: 4.5,
-      deliveryTime: 20,
-      category: "starters",
-      image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      description: "Crispy chicken wings with BBQ sauce"
+      id: 1,
+      name: "Margherita Pizza",
+      price: 320,
+      type: "veg",
+      rating: 4.7,
+      deliveryTime: 25,
+      category: "mains",
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Classic pizza with fresh mozzarella, tomato sauce, and basil"
     },
     {
-      id: 102,
-      name: "Paneer Tikka",
-      price: 240,
+      id: 2,
+      name: "Caesar Salad",
+      price: 180,
       type: "veg",
-      rating: 4.6,
+      rating: 4.2,
       deliveryTime: 15,
       category: "starters",
-      image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      description: "Grilled cottage cheese with mint chutney"
-    }
-  ],
-  mains: [
+      image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Fresh romaine lettuce with Caesar dressing and croutons"
+    },
     {
-      id: 201,
+      id: 3,
+      name: "Chocolate Lava Cake",
+      price: 150,
+      type: "veg",
+      rating: 4.8,
+      deliveryTime: 12,
+      category: "desserts",
+      image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Warm chocolate cake with molten center and vanilla ice cream"
+    },
+    {
+      id: 4,
+      name: "Fresh Orange Juice",
+      price: 90,
+      type: "veg",
+      rating: 4.3,
+      deliveryTime: 5,
+      category: "beverages",
+      image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Freshly squeezed orange juice packed with vitamin C"
+    },
+    {
+      id: 5,
       name: "Butter Chicken",
       price: 380,
       type: "nonveg",
@@ -45,240 +64,219 @@ const defaultMenuData = {
       description: "Tender chicken in rich, creamy tomato curry"
     },
     {
-      id: 202,
-      name: "Dal Tadka",
+      id: 6,
+      name: "Chicken Wings",
+      price: 280,
+      type: "nonveg",
+      rating: 4.5,
+      deliveryTime: 20,
+      category: "starters",
+      image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Crispy chicken wings with BBQ sauce and celery sticks"
+    },
+    {
+      id: 7,
+      name: "Mutton Biryani",
+      price: 450,
+      type: "nonveg",
+      rating: 4.9,
+      deliveryTime: 45,
+      category: "mains",
+      image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Premium Hyderabadi-style mutton biryani with saffron, tender meat pieces, and aromatic long grain basmati rice"
+    },
+    {
+      id: 8,
+      name: "Fish Curry",
+      price: 350,
+      type: "nonveg",
+      rating: 4.6,
+      deliveryTime: 35,
+      category: "mains",
+      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Authentic South Indian fish curry cooked in rich coconut gravy with curry leaves and traditional spices"
+    },
+    {
+      id: 9,
+      name: "Chicken Kebab",
       price: 220,
-      type: "veg",
+      type: "nonveg",
       rating: 4.4,
+      deliveryTime: 25,
+      category: "starters",
+      image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Grilled chicken marinated in yogurt and spices"
+    },
+    {
+      id: 10,
+      name: "Beef Burger",
+      price: 320,
+      type: "nonveg",
+      rating: 4.7,
       deliveryTime: 20,
       category: "mains",
-      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      description: "Yellow lentils tempered with spices"
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      description: "Juicy beef patty with lettuce, tomato, and special sauce"
     }
-  ],
-  desserts: [
-    {
-      id: 301,
-      name: "Gulab Jamun",
-      price: 120,
-      type: "veg",
-      rating: 4.6,
-      deliveryTime: 10,
-      category: "desserts",
-      image: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      description: "Soft milk dumplings in sugar syrup"
-    }
-  ],
-  beverages: [
-    {
-      id: 401,
-      name: "Mango Lassi",
-      price: 80,
-      type: "veg",
-      rating: 4.3,
-      deliveryTime: 5,
-      category: "beverages",
-      image: "https://images.unsplash.com/photo-1553909414-fae87aaab5ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      description: "Refreshing yogurt-based mango drink"
-    }
-  ]
-};
-
-const MenuPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [dietFilter, setDietFilter] = useState('all');
-  const [searchParams] = useSearchParams();
-  const { addItem } = useCart();
-  const { menuItems } = useAdmin();
-
-  // Handle URL parameters on component mount
-  useEffect(() => {
-    const urlSearch = searchParams.get('search');
-    const urlCategory = searchParams.get('category');
-
-    if (urlSearch) {
-      setSearchTerm(urlSearch);
-    }
-
-    if (urlCategory) {
-      setSelectedCategory(urlCategory);
-    }
-  }, [searchParams]);
-
-  const categories = [
-    { key: 'all', name: 'All Items', icon: '🍽️' },
-    { key: 'starters', name: 'Starters', icon: '🥗' },
-    { key: 'mains', name: 'Main Course', icon: '🍛' },
-    { key: 'desserts', name: 'Desserts', icon: '🍰' },
-    { key: 'beverages', name: 'Beverages', icon: '🥤' }
   ];
 
-  // Use admin menu items if available, otherwise use default data
-  const getAllMenuItems = () => {
-    if (menuItems && menuItems.length > 0) {
-      return menuItems;
-    }
+  const categories = [
+    { key: 'all', name: '🍽️ All Items' },
+    { key: 'starters', name: '🥗 Starters' },
+    { key: 'mains', name: '🍛 Mains' },
+    { key: 'desserts', name: '🍰 Desserts' },
+    { key: 'beverages', name: '🥤 Beverages' }
+  ];
 
-    // Combine all default menu items
-    return [
-      ...defaultMenuData.starters,
-      ...defaultMenuData.mains,
-      ...defaultMenuData.desserts,
-      ...defaultMenuData.beverages
-    ];
+  const filteredItems = selectedCategory === 'all'
+    ? menuItems
+    : menuItems.filter(item => item.category === selectedCategory);
+
+  const handleAddToCart = (item) => {
+    addItem(item);
   };
-
-  const allMenuItems = getAllMenuItems();
-
-  // Filter items based on category, search, and diet
-  const getFilteredItems = () => {
-    let items = selectedCategory === 'all' ? allMenuItems : allMenuItems.filter(item => item.category === selectedCategory);
-
-    // Apply search filter
-    if (searchTerm) {
-      items = items.filter(item =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    // Apply diet filter
-    if (dietFilter !== 'all') {
-      items = items.filter(item => item.type === dietFilter);
-    }
-
-    return items;
-  };
-
-  const filteredItems = getFilteredItems();
 
   return (
-    <Container className="py-4">
-      {/* Page Header */}
-      <Row className="mb-4">
-        <Col>
-          <div className="text-center mb-4">
-            <h1 className="display-4 fw-bold">Our Menu</h1>
-            <p className="lead text-muted">
-              Discover our delicious collection of dishes made with fresh ingredients
-            </p>
-          </div>
-        </Col>
-      </Row>
+    <div style={{ backgroundColor: '#f8f9fc', minHeight: '100vh', paddingTop: '100px' }}>
+      <Container>
+        {/* Header */}
+        <div style={{
+          background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+          borderRadius: '20px',
+          padding: '40px 30px',
+          textAlign: 'center',
+          marginBottom: '30px'
+        }}>
+          <h1 style={{ color: 'white', fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '10px' }}>
+            🍽️ Our Menu
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', marginBottom: '0' }}>
+            Fresh ingredients, delicious flavors
+          </p>
+        </div>
 
-      {/* Search and Filter Section */}
-      <Row className="mb-4">
-        <Col md={6} className="mb-3">
-          <InputGroup>
-            <Form.Control
-              type="text"
-              placeholder="Search for dishes..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <InputGroup.Text>🔍</InputGroup.Text>
-          </InputGroup>
-        </Col>
-        <Col md={3} className="mb-3">
-          <Form.Select
-            value={dietFilter}
-            onChange={(e) => setDietFilter(e.target.value)}
-          >
-            <option value="all">All Types</option>
-            <option value="veg">Vegetarian</option>
-            <option value="nonveg">Non-Vegetarian</option>
-          </Form.Select>
-        </Col>
-        <Col md={3} className="mb-3">
-          <div className="text-end">
-            <span className="text-muted">
-              {filteredItems.length} item{filteredItems.length !== 1 ? 's' : ''} found
-            </span>
-          </div>
-        </Col>
-      </Row>
-
-      {/* Category Navigation */}
-      <Row className="mb-4">
-        <Col>
-          <Nav
-            variant="pills"
-            className="justify-content-center flex-wrap"
-            activeKey={selectedCategory}
-          >
-            {categories.map((category) => (
-              <Nav.Item key={category.key} className="mb-2">
-                <Nav.Link
-                  eventKey={category.key}
+        {/* Category Chips */}
+        <Row className="mb-4">
+          <Col>
+            <div className="d-flex justify-content-center flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category.key}
                   onClick={() => setSelectedCategory(category.key)}
-                  className="px-4 py-2 mx-1"
+                  style={{
+                    background: selectedCategory === category.key
+                      ? 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)'
+                      : 'white',
+                    border: '2px solid #ff6b35',
+                    color: selectedCategory === category.key ? 'white' : '#ff6b35',
+                    borderRadius: '20px',
+                    padding: '8px 16px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
                 >
-                  <span className="me-2">{category.icon}</span>
                   {category.name}
-                </Nav.Link>
-              </Nav.Item>
-            ))}
-          </Nav>
-        </Col>
-      </Row>
+                </button>
+              ))}
+            </div>
+          </Col>
+        </Row>
 
-      {/* Menu Items */}
-      {filteredItems.length > 0 ? (
+        {/* Menu Items */}
         <Row>
           {filteredItems.map((item) => (
-            <Col xl={3} lg={4} md={6} key={item.id} className="mb-4">
-              <MenuItem item={item} />
+            <Col lg={4} md={6} key={item.id} className="mb-4">
+              <Card style={{
+                border: 'none',
+                borderRadius: '25px',
+                overflow: 'hidden',
+                height: '100%',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                transition: 'all 0.3s ease'
+              }}>
+                <Card.Img
+                  variant="top"
+                  src={item.image}
+                  style={{ height: '200px', objectFit: 'cover' }}
+                  alt={item.name}
+                />
+                <Card.Body className="d-flex flex-column">
+                  <div className="d-flex justify-content-between align-items-start mb-2">
+                    <Card.Title className="h6 mb-0">{item.name}</Card.Title>
+                    <Badge bg={item.type === 'veg' ? 'success' : 'danger'}>
+                      {item.type === 'veg' ? '🥬 VEG' : '🍖 NON-VEG'}
+                    </Badge>
+                  </div>
+
+                  <Card.Text className="text-muted small mb-2 flex-grow-1">
+                    {item.description}
+                  </Card.Text>
+
+                  <div className="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                      <span className="fw-bold text-success fs-5">₹{item.price}</span>
+                      <div className="text-muted small">For 1</div>
+                    </div>
+                    <div className="text-end">
+                      <div className="d-flex align-items-center mb-1">
+                        <span className="text-warning me-1">★</span>
+                        <span className="small fw-bold">{item.rating}</span>
+                        <span className="text-muted small ms-1">(50+)</span>
+                      </div>
+                      <div className="text-success small fw-bold">BESTSELLER</div>
+                    </div>
+                  </div>
+
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <div className="text-muted small">
+                      🚚 {item.deliveryTime} mins • Free delivery
+                    </div>
+                    <div className="text-muted small">
+                      🔥 Trending
+                    </div>
+                  </div>
+
+                  <div className="d-flex gap-2 mt-auto">
+                    <LinkContainer to={`/dish/${item.id}`}>
+                      <Button
+                        size="sm"
+                        className="flex-grow-1"
+                        style={{
+                          backgroundColor: '#ff6b35',
+                          border: 'none',
+                          color: 'white',
+                          fontWeight: '600',
+                          borderRadius: '12px'
+                        }}
+                      >
+                        View Details
+                      </Button>
+                    </LinkContainer>
+
+                    <Button
+                      size="sm"
+                      className="flex-grow-1"
+                      onClick={() => handleAddToCart(item)}
+                      style={{
+                        background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+                        border: 'none',
+                        color: 'white',
+                        fontWeight: '600',
+                        borderRadius: '12px'
+                      }}
+                    >
+                      Add to Cart
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
             </Col>
           ))}
         </Row>
-      ) : (
-        <Row className="py-5">
-          <Col>
-            <Card className="text-center border-0">
-              <Card.Body className="py-5">
-                <div className="mb-3">
-                  <span className="display-1">🍽️</span>
-                </div>
-                <Card.Title className="h4">No items found</Card.Title>
-                <Card.Text className="text-muted">
-                  {searchTerm || dietFilter !== 'all' || selectedCategory !== 'all'
-                    ? 'Try adjusting your search or filters to see more results.'
-                    : 'No items available in this category.'}
-                </Card.Text>
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    setSearchTerm('');
-                    setDietFilter('all');
-                    setSelectedCategory('all');
-                  }}
-                >
-                  Clear Filters
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      )}
-
-      {/* Special Offers Section */}
-      <Row className="mt-5">
-        <Col>
-          <Card className="bg-primary text-white">
-            <Card.Body className="text-center py-4">
-              <h3 className="mb-3">🎉 Special Offers</h3>
-              <p className="lead mb-3">
-                Get 20% off on orders above ₹500. Use code: SAVE20
-              </p>
-              <Button variant="light" size="lg">
-                Apply Offer
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+      </Container>
+    </div>
   );
 };
 

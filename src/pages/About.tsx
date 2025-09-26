@@ -15,7 +15,7 @@ const About: React.FC = () => {
     {
       name: 'Maria Rodriguez',
       role: 'Head Chef',
-      image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=300&h=300&fit=crop&crop=face',
+      image: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       description: '15+ years of culinary experience from top restaurants'
     },
     {
