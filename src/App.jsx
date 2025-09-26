@@ -5,8 +5,8 @@ import { UserProvider } from './context/UserContext';
 import { AdminProvider } from './context/AdminContext';
 import { ToastProvider } from './context/ToastContext';
 import ToastContainer from './components/ui/ToastContainer';
-import NavigationBar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+import NavigationBar from './components/Layout/Navbar';
+import Footer from './components/Layout/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
 
