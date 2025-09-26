@@ -13,6 +13,7 @@ import DishDetailPage from './pages/DishDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 import MyAccountPage from './pages/MyAccountPage';
 import FavouritesPage from './pages/FavouritesPage';
+import OffersPage from './pages/OffersPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import AboutPage from './pages/AboutPage';
@@ -64,6 +65,7 @@ function App() {
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/account" element={<MyAccountPage />} />
                   <Route path="/favourites" element={<FavouritesPage />} />
+                  <Route path="/offers" element={<OffersPage />} />
                   <Route path="/orders" element={<OrderHistoryPage />} />
                   <Route path="/admin" element={<AdminPage />} />
                   <Route path="/dashboard" element={<DashboardPage />} />

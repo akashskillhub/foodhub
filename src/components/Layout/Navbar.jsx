@@ -131,11 +131,13 @@ function NavigationBar() {
 
 
               {/* Offers */}
-              <Nav.Link className="d-flex align-items-center text-dark px-0">
-                <Percent size={18} className="me-2" />
-                <span className="fw-medium">Offers</span>
-                <Badge bg="warning" className="ms-1 text-dark" style={{ fontSize: '10px' }}>NEW</Badge>
-              </Nav.Link>
+              <LinkContainer to="/offers">
+                <Nav.Link className="d-flex align-items-center text-dark px-0">
+                  <Percent size={18} className="me-2" />
+                  <span className="fw-medium">Offers</span>
+                  <Badge bg="warning" className="ms-1 text-dark" style={{ fontSize: '10px' }}>NEW</Badge>
+                </Nav.Link>
+              </LinkContainer>
 
               {/* Help */}
               <LinkContainer to="/help">

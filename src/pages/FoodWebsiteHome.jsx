@@ -630,20 +630,24 @@ function FoodWebsiteHome() {
               <Button
                 size="lg"
                 className="px-5 py-3"
-                style={{
-                  backgroundColor: '#fc8019',
-                  borderColor: '#fc8019',
+                variant="" style={{
+                  backgroundColor: '#ff9900', // solid orange
+                  border: 'none',
                   color: 'white',
                   borderRadius: '25px',
                   fontWeight: '600'
                 }}
+                onMouseEnter={e => e.target.style.backgroundColor = '#ff9900'} // hover color
+                onMouseLeave={e => e.target.style.backgroundColor = '#ff9900'}
               >
                 Order Your Favorites Now
               </Button>
             </LinkContainer>
           </Col>
         </Row>
+
       </Container>
+
 
 
       {/* Best Places to Eat Across Cities Section */}
@@ -1048,21 +1052,32 @@ function FoodWebsiteHome() {
                 size="lg"
                 className="px-5 py-3 fw-bold"
                 style={{
-                  backgroundColor: '#fc8019',
+                  backgroundColor: '#fc8019', // solid orange
                   borderColor: '#fc8019',
-                  color: 'white',
+                  color: 'white', // text white
                   borderRadius: '30px',
                   fontSize: '18px',
                   boxShadow: '0 8px 20px rgba(252,128,25,0.3)',
-                  minWidth: '200px'
+                  minWidth: '200px',
+                  transition: 'all 0.3s ease', // smooth hover transition
+                }}
+                onMouseEnter={e => {
+                  e.target.style.backgroundColor = '#e67300'; // darker orange on hover
+                  e.target.style.boxShadow = '0 10px 25px rgba(252,128,25,0.4)';
+                }}
+                onMouseLeave={e => {
+                  e.target.style.backgroundColor = '#fc8019'; // original orange
+                  e.target.style.boxShadow = '0 8px 20px rgba(252,128,25,0.3)';
                 }}
               >
                 Start Exploring
               </Button>
+
             </LinkContainer>
           </motion.div>
         </Container>
       </motion.section>
+
 
     </div>
   );
