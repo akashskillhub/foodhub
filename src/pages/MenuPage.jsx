@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useCart } from '../context/CartContext';
+import { useToast } from '../context/ToastContext';
 
 const MenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [favouriteItems, setFavouriteItems] = useState([]);
   const { addItem } = useCart();
+  const { showToast } = useToast();
 
   const menuItems = [
     {
@@ -134,6 +137,18 @@ const MenuPage = () => {
 
   const handleAddToCart = (item) => {
     addItem(item);
+    showToast(`${item.name} added to cart!`, 'success');
+  };
+
+  const toggleFavourite = (itemId) => {
+    const item = menuItems.find(item => item.id === itemId);
+    if (favouriteItems.includes(itemId)) {
+      setFavouriteItems(favouriteItems.filter(id => id !== itemId));
+      showToast(`${item.name} removed from favourites`, 'info');
+    } else {
+      setFavouriteItems([...favouriteItems, itemId]);
+      showToast(`${item.name} added to favourites!`, 'success');
+    }
   };
 
   return (
@@ -194,8 +209,41 @@ const MenuPage = () => {
                 overflow: 'hidden',
                 height: '100%',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                position: 'relative'
               }}>
+                {/* Favourite Heart Icon */}
+                <Button
+                  onClick={() => toggleFavourite(item.id)}
+                  style={{
+                    position: 'absolute',
+                    top: '15px',
+                    right: '15px',
+                    zIndex: 2,
+                    background: 'rgba(255,255,255,0.9)',
+                    border: 'none',
+                    borderRadius: '50%',
+                    width: '40px',
+                    height: '40px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '18px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  title={favouriteItems.includes(item.id) ? "Remove from favourites" : "Add to favourites"}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)';
+                    e.target.style.transform = 'scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'rgba(255,255,255,0.9)';
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
+                  {favouriteItems.includes(item.id) ? '❤️' : '🤍'}
+                </Button>
                 <Card.Img
                   variant="top"
                   src={item.image}

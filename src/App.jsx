@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { UserProvider } from './context/UserContext';
 import { AdminProvider } from './context/AdminContext';
+import { ToastProvider } from './context/ToastContext';
+import ToastContainer from './components/ui/ToastContainer';
 import NavigationBar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import FoodWebsiteHome from './pages/FoodWebsiteHome';
@@ -44,7 +46,8 @@ function App() {
       <UserProvider>
         <CartProvider>
           <AdminProvider>
-            <Router>
+            <ToastProvider>
+              <Router>
               <NavigationBar />
               <main style={{ minHeight: '80vh' }}>
                 <Routes>
@@ -79,10 +82,12 @@ function App() {
                 </Routes>
               </main>
               <Footer />
+              <ToastContainer />
             </Router>
-          </AdminProvider>
-        </CartProvider>
-      </UserProvider>
+          </ToastProvider>
+        </AdminProvider>
+      </CartProvider>
+    </UserProvider>
     </div>
   );
 }
