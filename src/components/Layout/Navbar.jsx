@@ -96,7 +96,7 @@ function NavigationBar() {
             </div>
 
             {/* Search Bar */}
-            <div className="flex-grow-1 mx-4 hide-mobile" style={{ maxWidth: '500px' }}>
+            <div className="flex-grow-1 mx-4" style={{ maxWidth: '500px' }}>
               <Form onSubmit={handleSearch}>
                 <InputGroup>
                   <Form.Control
@@ -228,6 +228,7 @@ function NavigationBar() {
         .dropdown-menu {
           border: 1px solid #e0e0e0;
           box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          z-index: 1050;
         }
 
         .dropdown-item:hover {
@@ -238,6 +239,256 @@ function NavigationBar() {
         .form-control:focus {
           border-color: #fc8019;
           box-shadow: 0 0 0 0.2rem rgba(252, 128, 25, 0.25);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 991px) {
+          .hide-mobile {
+            display: none !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .navbar {
+            height: 60px !important;
+            padding: 0 !important;
+          }
+
+          .container-fluid {
+            padding: 0 10px !important;
+          }
+
+          .d-flex.align-items-center.w-100 {
+            flex-wrap: nowrap !important;
+            gap: 6px !important;
+          }
+
+          .navbar-brand {
+            margin-right: 0 !important;
+            flex-shrink: 0 !important;
+          }
+
+          .navbar-brand > div {
+            font-size: 16px !important;
+            padding: 6px 10px !important;
+            white-space: nowrap !important;
+          }
+
+          /* Search bar on mobile - compact */
+          .flex-grow-1.mx-4 {
+            margin: 0 !important;
+            max-width: none !important;
+            flex: 1 !important;
+            min-width: 0 !important;
+          }
+
+          .form-control {
+            font-size: 13px !important;
+            padding: 8px 10px !important;
+            border-radius: 8px !important;
+          }
+
+          .form-control::placeholder {
+            font-size: 12px !important;
+          }
+
+          .input-group-text {
+            padding: 8px 10px !important;
+            border-radius: 0 8px 8px 0 !important;
+          }
+
+          .input-group-text svg {
+            width: 16px !important;
+            height: 16px !important;
+          }
+
+          /* Right side nav - compact icons only */
+          .navbar-nav {
+            gap: 3px !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            flex-shrink: 0 !important;
+          }
+
+          .nav-link {
+            padding: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-width: 36px !important;
+          }
+
+          .nav-link span.fw-medium {
+            display: none !important;
+          }
+
+          .user-dropdown .dropdown-toggle {
+            padding: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-width: 36px !important;
+          }
+
+          .user-dropdown .dropdown-toggle span {
+            display: none !important;
+          }
+
+          .nav-link svg {
+            width: 20px !important;
+            height: 20px !important;
+            margin: 0 !important;
+          }
+
+          .badge {
+            font-size: 9px !important;
+            min-width: 16px !important;
+            height: 16px !important;
+            padding: 2px 4px !important;
+          }
+
+          /* Badge positioning for cart */
+          .nav-link .badge {
+            top: 2px !important;
+            right: 2px !important;
+          }
+
+          /* Dropdown positioning on mobile */
+          .user-dropdown .dropdown-menu {
+            position: fixed !important;
+            top: 60px !important;
+            right: 10px !important;
+            left: 10px !important;
+            width: auto !important;
+            max-width: calc(100vw - 20px) !important;
+            margin: 0 !important;
+            z-index: 1050 !important;
+          }
+
+          .navbar {
+            z-index: 1040 !important;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .navbar {
+            height: 56px !important;
+          }
+
+          .container-fluid {
+            padding: 0 8px !important;
+          }
+
+          .navbar-brand > div {
+            font-size: 15px !important;
+            padding: 5px 8px !important;
+          }
+
+          .form-control {
+            font-size: 12px !important;
+            padding: 6px 8px !important;
+          }
+
+          .form-control::placeholder {
+            font-size: 11px !important;
+          }
+
+          .input-group-text {
+            padding: 6px 8px !important;
+          }
+
+          .navbar-nav {
+            gap: 2px !important;
+          }
+
+          .nav-link {
+            padding: 6px !important;
+            min-width: 32px !important;
+          }
+
+          .user-dropdown .dropdown-toggle {
+            padding: 6px !important;
+            min-width: 32px !important;
+          }
+
+          .nav-link svg {
+            width: 18px !important;
+            height: 18px !important;
+          }
+
+          /* Dropdown positioning on smaller mobile */
+          .user-dropdown .dropdown-menu {
+            top: 56px !important;
+            right: 8px !important;
+            left: 8px !important;
+            max-width: calc(100vw - 16px) !important;
+          }
+        }
+
+        @media (max-width: 400px) {
+          .navbar {
+            height: 54px !important;
+          }
+
+          .container-fluid {
+            padding: 0 6px !important;
+          }
+
+          .navbar-brand > div {
+            font-size: 14px !important;
+            padding: 4px 7px !important;
+          }
+
+          .form-control {
+            font-size: 11px !important;
+            padding: 5px 6px !important;
+          }
+
+          .form-control::placeholder {
+            font-size: 10px !important;
+          }
+
+          .input-group-text {
+            padding: 5px 6px !important;
+          }
+
+          .input-group-text svg {
+            width: 14px !important;
+            height: 14px !important;
+          }
+
+          .navbar-nav {
+            gap: 1px !important;
+          }
+
+          .nav-link {
+            padding: 5px !important;
+            min-width: 28px !important;
+          }
+
+          .user-dropdown .dropdown-toggle {
+            padding: 5px !important;
+            min-width: 28px !important;
+          }
+
+          .nav-link svg {
+            width: 16px !important;
+            height: 16px !important;
+          }
+
+          .badge {
+            font-size: 8px !important;
+            min-width: 14px !important;
+            height: 14px !important;
+          }
+
+          /* Dropdown positioning on extra small screens */
+          .user-dropdown .dropdown-menu {
+            top: 54px !important;
+            right: 6px !important;
+            left: 6px !important;
+            max-width: calc(100vw - 12px) !important;
+          }
         }
       `}</style>
     </>
