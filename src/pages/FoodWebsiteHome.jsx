@@ -144,7 +144,8 @@ function FoodWebsiteHome() {
           <div
             className="d-flex gap-4 pb-3 food-carousel"
             style={{
-              width: 'max-content'
+              width: 'max-content',
+              animation: 'scroll-horizontal 25s linear infinite'
             }}
           >
             {featuredDishes.map((dish, index) => (
@@ -356,24 +357,13 @@ function FoodWebsiteHome() {
           /* Container for carousel */
           .food-carousel-container {
             overflow: hidden;
-          }
-
-          /* Continuous auto-scroll on all devices */
-          .food-carousel {
-            animation: scroll-horizontal 30s linear infinite;
+            width: 100%;
           }
 
           /* Pause on hover (desktop only) */
           @media (min-width: 769px) {
             .food-carousel:hover {
               animation-play-state: paused;
-            }
-          }
-
-          /* Mobile - Continuous auto-scroll */
-          @media (max-width: 768px) {
-            .food-carousel {
-              animation: scroll-horizontal 25s linear infinite;
             }
           }
 
