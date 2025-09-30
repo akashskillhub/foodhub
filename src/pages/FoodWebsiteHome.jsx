@@ -142,10 +142,10 @@ function FoodWebsiteHome() {
         {/* Horizontal Scrollable Food Categories */}
         <div className="position-relative mb-4 food-carousel-container">
           <div
-            className="d-flex gap-4 pb-3 food-carousel"
+            className="d-flex gap-3 pb-3 food-carousel"
             style={{
               width: 'max-content',
-              animation: 'scroll-horizontal 25s linear infinite'
+              animation: 'scroll-horizontal 20s linear infinite'
             }}
           >
             {featuredDishes.map((dish, index) => (
@@ -364,6 +364,39 @@ function FoodWebsiteHome() {
           @media (min-width: 769px) {
             .food-carousel:hover {
               animation-play-state: paused;
+            }
+          }
+
+          /* Mobile specific styles */
+          @media (max-width: 768px) {
+            .food-carousel {
+              animation: scroll-horizontal 15s linear infinite !important;
+              gap: 12px !important;
+            }
+
+            .food-carousel .flex-shrink-0 {
+              min-width: 120px !important;
+            }
+
+            .food-carousel .rounded-circle {
+              width: 120px !important;
+              height: 120px !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .food-carousel {
+              animation: scroll-horizontal 12s linear infinite !important;
+              gap: 10px !important;
+            }
+
+            .food-carousel .flex-shrink-0 {
+              min-width: 100px !important;
+            }
+
+            .food-carousel .rounded-circle {
+              width: 100px !important;
+              height: 100px !important;
             }
           }
 
