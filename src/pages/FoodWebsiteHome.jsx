@@ -140,11 +140,10 @@ function FoodWebsiteHome() {
         </Row>
 
         {/* Horizontal Scrollable Food Categories */}
-        <div className="position-relative mb-4 overflow-hidden">
+        <div className="position-relative mb-4 food-carousel-container">
           <div
             className="d-flex gap-4 pb-3 food-carousel"
             style={{
-              animation: 'scroll-horizontal 20s linear infinite',
               width: 'max-content'
             }}
           >
@@ -354,8 +353,38 @@ function FoodWebsiteHome() {
             }
           }
 
-          .food-carousel:hover {
-            animation-play-state: paused;
+          /* Desktop - Auto scroll animation */
+          @media (min-width: 769px) {
+            .food-carousel-container {
+              overflow: hidden;
+            }
+
+            .food-carousel {
+              animation: scroll-horizontal 20s linear infinite;
+            }
+
+            .food-carousel:hover {
+              animation-play-state: paused;
+            }
+          }
+
+          /* Mobile - Manual touch scroll */
+          @media (max-width: 768px) {
+            .food-carousel-container {
+              overflow-x: auto;
+              overflow-y: hidden;
+              -webkit-overflow-scrolling: touch;
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+            }
+
+            .food-carousel-container::-webkit-scrollbar {
+              display: none;
+            }
+
+            .food-carousel {
+              animation: none !important;
+            }
           }
 
           div::-webkit-scrollbar {
