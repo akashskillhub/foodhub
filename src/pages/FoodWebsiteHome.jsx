@@ -353,41 +353,36 @@ function FoodWebsiteHome() {
             }
           }
 
-          /* Desktop - Auto scroll animation */
+          /* Container for carousel */
+          .food-carousel-container {
+            overflow: hidden;
+          }
+
+          /* Continuous auto-scroll on all devices */
+          .food-carousel {
+            animation: scroll-horizontal 30s linear infinite;
+          }
+
+          /* Pause on hover (desktop only) */
           @media (min-width: 769px) {
-            .food-carousel-container {
-              overflow: hidden;
-            }
-
-            .food-carousel {
-              animation: scroll-horizontal 20s linear infinite;
-            }
-
             .food-carousel:hover {
               animation-play-state: paused;
             }
           }
 
-          /* Mobile - Manual touch scroll */
+          /* Mobile - Continuous auto-scroll */
           @media (max-width: 768px) {
-            .food-carousel-container {
-              overflow-x: auto;
-              overflow-y: hidden;
-              -webkit-overflow-scrolling: touch;
-              scrollbar-width: none;
-              -ms-overflow-style: none;
-            }
-
-            .food-carousel-container::-webkit-scrollbar {
-              display: none;
-            }
-
             .food-carousel {
-              animation: none !important;
+              animation: scroll-horizontal 25s linear infinite;
             }
           }
 
+          /* Hide scrollbar */
           div::-webkit-scrollbar {
+            display: none;
+          }
+
+          .food-carousel-container::-webkit-scrollbar {
             display: none;
           }
         `}</style>
